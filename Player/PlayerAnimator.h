@@ -16,4 +16,5 @@ public:
 
 private:
     bool isIdle = true;
+    bool isRight = false; // only for the current spritesheet's Right idle state
 };

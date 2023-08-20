@@ -18,6 +18,15 @@ Player::Player()
       pstate(PlayerState::IDLE),
       pfacingDirection(PlayerFacingDirection::RIGHT)
 {
+    initialTexture();
+}
+
+void Player::initialTexture()
+{
+    m_player.setTexture(TextureManager::get_player_texture());
+    float w = TextureManager::get_player_texture().getSize().x;
+    float h = TextureManager::get_player_texture().getSize().y;
+    m_player.setTextureRect(sf::IntRect(0, 0, w / 4, h / 4));
 }
 
 sf::Vector2f Player::getPosition() const {

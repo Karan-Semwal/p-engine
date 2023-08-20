@@ -48,12 +48,12 @@ void Animator::update()
 
             if (currentFrame >= columns) { // if (currentFrame > columns * rows) { // DBG
                 currentFrame = 0;
-                //isAlive = false;
-                //return;
+                isAlive = false;
+                return;
             }
 
             int frameX = currentFrame % columns;
-            int frameY = currentFrame / columns;
+            int frameY = currentFrame / columns; // to switch between rows
 
             sprite.setTextureRect(sf::IntRect(
                 frameX * sprite.getTextureRect().width,

@@ -12,6 +12,7 @@ class Player
 public:
     Player();
     ~Player() {}
+    void initialTexture();
     sf::Vector2f getPosition() const;
     void setPosition(const sf::Vector2f& pos);
     sf::Sprite& getPlayer();

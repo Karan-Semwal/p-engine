@@ -8,18 +8,23 @@ void PlayerAnimator::switchAnimation(Player& player)
             isIdle = true;
             break;
         case PlayerState::MOVE:
+            isIdle = false;
             switch (player.pfacingDirection)
             {
                 case PlayerFacingDirection::LEFT:
                     rows = 2;
+                    isRight = false;
                     break;
                 case PlayerFacingDirection::RIGHT:
+                    isRight = true;
                     rows = 3;
                     break;
                 case PlayerFacingDirection::UP:
+                    isRight = false;
                     rows = 1;
                     break;
                 case PlayerFacingDirection::DOWN:
+                    isRight = false;
                     rows = 0;
                     break;
                 default:
@@ -37,6 +42,8 @@ void PlayerAnimator::switchAnimation(Player& player)
 
 void PlayerAnimator::update()
 {
+    int frameX{};
+    int frameY{};
     if (!isIdle) 
     {
         if (m_timer.getElapsedTime() >= frameTime) {
@@ -47,8 +54,8 @@ void PlayerAnimator::update()
                 currentFrame = 0;
             }
 
-            int frameX = currentFrame % columns;
-            int frameY = currentFrame / columns;
+            frameX = currentFrame % columns;
+            frameY = rows;
 
             sprite.setTextureRect(sf::IntRect(
                 frameX * sprite.getTextureRect().width,
@@ -58,5 +65,19 @@ void PlayerAnimator::update()
             );
         }
         m_timer.update();
+    }
+    else
+    {
+        if (isRight)
+            frameX = 3; // only for the current spritesheet's Right idle state
+        else
+            frameX = 0;
+        frameY = rows;
+        sprite.setTextureRect(sf::IntRect(
+            frameX * sprite.getTextureRect().width,
+            frameY * sprite.getTextureRect().height,
+            sprite.getTextureRect().width,
+            sprite.getTextureRect().height)
+        );
     }
 }
