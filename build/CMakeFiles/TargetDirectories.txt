@@ -1,0 +1,3 @@
+/home/prime/Desktop/dev/cpp/sfml-testing/build/CMakeFiles/sfml-testing.dir
+/home/prime/Desktop/dev/cpp/sfml-testing/build/CMakeFiles/edit_cache.dir
+/home/prime/Desktop/dev/cpp/sfml-testing/build/CMakeFiles/rebuild_cache.dir

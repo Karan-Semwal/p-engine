@@ -3,6 +3,8 @@
 sf::Texture TextureManager::shipText;
 sf::Texture TextureManager::bulletText;
 sf::Texture TextureManager::playerText;
+sf::Texture TextureManager::dirtText;
+sf::Texture TextureManager::wallText;
 
 sf::Texture& TextureManager::get_ship_texture() 
 {
@@ -28,4 +30,20 @@ sf::Texture& TextureManager::get_player_texture()
             std::cout << "Failed to load player texture\n";
     }
     return playerText;
+}
+
+sf::Texture& TextureManager::get_dirt_texture()
+{
+    if (!dirtText.loadFromFile(TEXT_PATH_DIRT)) {
+            std::cout << "Failed to load dirt texture\n";
+    }
+    return dirtText;
+}
+
+sf::Texture& TextureManager::get_wall_texture()
+{
+    if (!wallText.loadFromFile(TEXT_PATH_WALL)) {
+            std::cout << "Failed to load wall texture\n";
+    }
+    return wallText;
 }

@@ -12,13 +12,20 @@
 // }
 
 Player::Player()
-    : m_player(), m_veloctiy(5.f, 5.f), 
+    : m_player(),
+      m_veloctiy(3.f, 3.f),
       m_animator(new PlayerAnimator(this->getPlayer(), TextureManager::get_player_texture(), 4, 4, 0.15f)),
       m_controller(new PlayerController()),
       pstate(PlayerState::IDLE),
       pfacingDirection(PlayerFacingDirection::RIGHT)
 {
-    initialTexture();
+    //initialTexture();
+}
+
+Player::~Player()
+{
+    delete m_animator;
+    delete m_controller;
 }
 
 void Player::initialTexture()

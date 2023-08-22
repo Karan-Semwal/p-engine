@@ -9,9 +9,10 @@ Animator::Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, f
       sprite(object),
       m_timer()
 {
-    position = sf::Vector2f(300.f, 300.f);
+    position = sprite.getPosition();
     m_timer.start();
     sprite.setTexture(*texture);
+    sprite.setScale(0.75f, 0.75f);
     sprite.setTextureRect(sf::IntRect(0, 0, texture->getSize().x / columns, texture->getSize().y / rows));
  
     sf::Vector2f centre(sprite.getTextureRect().width / 2.f, sprite.getTextureRect().height / 2.f);
