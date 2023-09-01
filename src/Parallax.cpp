@@ -4,16 +4,6 @@
 static constexpr float WIDTH  = 800.f;
 static constexpr float HEIGHT = 400.f;
 
-void operator<<(std::ostream& stream, sf::Vector2f v)
-{
-    stream << v.x << ", " << v.y << std::endl;
-}
-
-void operator/(sf::Vector2f& v, float val) {
-    v.x /= val;
-    v.y /= val;
-}
-
 class Parallax
 {
 public:

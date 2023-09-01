@@ -10,14 +10,14 @@ Animator::Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, f
       m_timer()
 {
     position = sprite.getPosition();
+    this->setPosition(position);
     m_timer.start();
+    sprite.setScale(0.75f, 0.75f); // set size of player
     sprite.setTexture(*texture);
-    sprite.setScale(0.75f, 0.75f);
     sprite.setTextureRect(sf::IntRect(0, 0, texture->getSize().x / columns, texture->getSize().y / rows));
  
     sf::Vector2f centre(sprite.getTextureRect().width / 2.f, sprite.getTextureRect().height / 2.f);
     sprite.setOrigin(centre);
-    this->setPosition(position);
 }
 
 Animator::Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, const sf::Vector2f& pos, float ft)

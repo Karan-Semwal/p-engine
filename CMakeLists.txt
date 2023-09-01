@@ -7,9 +7,11 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "-g")
 
 # Add the source files to your project
-file(GLOB SOURCE_FILES 
+file(GLOB SOURCE_FILES
     src/*.cpp
     Player/*cpp
+    Map/*cpp
+    Camera/*cpp
 )
 
 # Add the executable target
@@ -17,8 +19,11 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 
 # Set the include directories
 target_include_directories(${PROJECT_NAME} PUBLIC 
+    ${CMAKE_CURRENT_SOURCE_DIR}/
     ${CMAKE_CURRENT_SOURCE_DIR}/src/include
     ${CMAKE_CURRENT_SOURCE_DIR}/Player/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/Map/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/Camera/include
 )
 
 # Find SFML package

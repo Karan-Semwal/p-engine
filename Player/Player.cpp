@@ -2,24 +2,17 @@
 #include "PlayerController.h"
 #include "PlayerAnimator.h"
 
-// Player::Player()
-//     : m_player(), m_veloctiy(5.f, 5.f), 
-//       m_animator(std::make_unique<PlayerAnimator>(this->getPlayer(), TextureManager::get_player_texture(), 4, 4, 0.15f)),
-//       m_controller(std::make_unique<PlayerController>()),
-//       pstate(PlayerState::IDLE),
-//       pfacingDirection(PlayerFacingDirection::RIGHT)
-// {
-// }
-
 Player::Player()
     : m_player(),
       m_veloctiy(3.f, 3.f),
-      m_animator(new PlayerAnimator(this->getPlayer(), TextureManager::get_player_texture(), 4, 4, 0.15f)),
+      m_animator(new PlayerAnimator(*this, TextureManager::get_player_texture(), 4, 4, 0.15f)),
       m_controller(new PlayerController()),
       pstate(PlayerState::IDLE),
       pfacingDirection(PlayerFacingDirection::RIGHT)
 {
-    //initialTexture();
+    //initTexture();
+    sf::Vector2f origin(m_player.getTextureRect().width / 2.f, m_player.getTextureRect().height / 2.f);
+    this->m_player.setOrigin(origin);
 }
 
 Player::~Player()
@@ -28,7 +21,7 @@ Player::~Player()
     delete m_controller;
 }
 
-void Player::initialTexture()
+void Player::initTexture()
 {
     m_player.setTexture(TextureManager::get_player_texture());
     float w = TextureManager::get_player_texture().getSize().x;
@@ -44,12 +37,16 @@ void Player::setPosition(const sf::Vector2f& pos) {
     m_player.setPosition(pos);
 }
 
-sf::Sprite& Player::getPlayer() {
+sf::Sprite& Player::getObject() {
     return m_player; 
 }
 
 sf::Vector2f& Player::getVelocity() {
     return m_veloctiy; 
+}
+
+void Player::setVelocity(const sf::Vector2f& vel) {
+    this->m_veloctiy = vel;
 }
 
 void Player::update() {

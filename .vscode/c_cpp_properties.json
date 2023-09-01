@@ -5,6 +5,11 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/src/include",
+                "${workspaceFolder}/Map/include",
+                "${workspaceFolder}/Player/include",
+                "${workspaceFolder}/Camera/include",
+                "${workspaceFolder}/src/include",
+                "${workspaceFolder}/Player/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
