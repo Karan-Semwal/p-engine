@@ -19,17 +19,9 @@ public:
     void printmap();
     void switchMap(const std::string& levelString);
     void renderMap(sf::RenderWindow& window);
-    void calcSpawnPos() {
-        for (int row = 0; row < rows; ++row)
-            for (int col = 0; col < cols; ++col) {
-                char tileType = mapData[row * cols + col];
-                if (tileType == '?') {
-                    spawnPosition.x = row;
-                    spawnPosition.y = col;
-                }
-            }
-    }
+    void calcSpawnPos(); // DBG
     sf::Vector2f getMapSize() { return sf::Vector2f(mapWidth, mapHeight); }
+    char getChatAtMap(int x, int y);
 
 public:
     sf::Vector2f spawnPosition;

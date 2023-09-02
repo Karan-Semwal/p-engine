@@ -6,18 +6,8 @@
 class PlayerAnimator : public Animator
 {
 public:
-    PlayerAnimator(Player& player, sf::Texture& spriteSheet, int c, int r, float ft)
-        : Animator(player.getObject(), spriteSheet, c, r, ft)
-    {
-        currentColumn = columns;
-        if (player.pfacingDirection == PlayerFacingDirection::RIGHT) {
-            isRight = true;
-            currentRow = rows - 1;
-        }
-        if (player.pstate == PlayerState::IDLE) {
-            isIdle = true;
-        }
-    }
+    PlayerAnimator(Player& player, sf::Texture& spriteSheet, int c, int r, float ft);
+    ~PlayerAnimator() { }
 
     void switchAnimation(Player& player);
     void update() override;

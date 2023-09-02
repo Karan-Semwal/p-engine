@@ -1,8 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "TextureManager.h"
+#include "Tilemap.h"
 #include "PlayerState.h"
-#include "PlayerCollider.h"
+#include "TextureManager.h"
 
 // Forward declaration
 class PlayerAnimator;
@@ -20,7 +20,7 @@ public:
     sf::Sprite& getObject();
     sf::Vector2f& getVelocity();
     void setVelocity(const sf::Vector2f& vel);
-    void update();
+    void update(Tilemap& map);
     void render(sf::RenderWindow& window);
 
 public:

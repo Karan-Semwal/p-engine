@@ -59,3 +59,28 @@ void Tilemap::switchMap(const std::string& levelString)
 {
     this->mapData = levelString;
 }
+
+char Tilemap::getChatAtMap(int x, int y)
+{
+    char character = '!';
+    int index = y * cols + (x);
+    if (index > 0 && index < this->mapData.size()) {
+        character = this->mapData[index];
+    }
+    else {
+        std::cout << "Invalid map index\n";
+    }
+    return character;
+}
+
+void Tilemap::calcSpawnPos()
+{
+    for (int row = 0; row < rows; ++row)
+        for (int col = 0; col < cols; ++col) {
+            char tileType = mapData[row * cols + col];
+            if (tileType == '?') {
+                spawnPosition.x = row;
+                spawnPosition.y = col;
+            }
+        }
+}

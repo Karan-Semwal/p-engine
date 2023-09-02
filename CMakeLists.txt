@@ -12,6 +12,7 @@ file(GLOB SOURCE_FILES
     Player/*cpp
     Map/*cpp
     Camera/*cpp
+    Collision/*cpp
 )
 
 # Add the executable target
@@ -24,6 +25,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/Player/include
     ${CMAKE_CURRENT_SOURCE_DIR}/Map/include
     ${CMAKE_CURRENT_SOURCE_DIR}/Camera/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/Collision/include
 )
 
 # Find SFML package
