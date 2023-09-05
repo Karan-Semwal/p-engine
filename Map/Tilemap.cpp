@@ -63,7 +63,7 @@ void Tilemap::switchMap(const std::string& levelString)
 char Tilemap::getChatAtMap(int x, int y)
 {
     char character = '!';
-    int index = y * cols + (x);
+    int index = y * cols + x;
     if (index > 0 && index < this->mapData.size()) {
         character = this->mapData[index];
     }

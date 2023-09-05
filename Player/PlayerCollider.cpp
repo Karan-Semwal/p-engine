@@ -7,6 +7,11 @@ PlayerCollider::PlayerCollider(Player& player)
 {
 }
 
+void setPos(Player& player, float x, float y) {
+    sf::Vector2f pos(x, y);
+    player.getObject().setPosition(pos);
+}
+
 void PlayerCollider::onColliding()
 {
     // player collision response
@@ -14,34 +19,39 @@ void PlayerCollider::onColliding()
 
 void PlayerCollider::update(Player& player, Tilemap& map)
 {
-    // check for collision with all adjacent tiles
-    int playerX = std::round(player.getPosition().x / TILE_WIDTH_SIZE);
-    int playerY = std::round(player.getPosition().y / TILE_HEIGHT_SIZE);
+    float playerX = player.getPosition().x;
+    float playerY = player.getPosition().y;
 
-    char playerTile = map.getChatAtMap(playerX, playerY); // DBG
-    char rightTile  = map.getChatAtMap(playerX + 1, playerY);
-    std::cout << rightTile << std::endl;
-    char leftTile   = map.getChatAtMap(playerX - 1, playerY);
-    char topTile    = map.getChatAtMap(playerX, playerY - 1);
-    char bottomTile = map.getChatAtMap(playerX, playerY + 1);
+    int pTileX = std::round(playerX / TILE_WIDTH_SIZE);
+    int pTileY = std::round(playerY / TILE_HEIGHT_SIZE);
+
+    char playerTile = map.getChatAtMap(pTileX, pTileY);
+    char rightTile  = map.getChatAtMap(pTileX, pTileY); // DBG
+    char leftTile   = map.getChatAtMap(pTileX - 1, pTileY);
+    char topTile    = map.getChatAtMap(pTileX, pTileY - 1);
+    char bottomTile = map.getChatAtMap(pTileX, pTileY); // DBG
 
     this->collisionSide.resetCollisionSides();
 
     if (rightTile == '#') {
         this->collisionSide.RIGHT = true;
         std::cout << "Colliding right\n"; // DBG
+        setPos(player, playerX, playerY);
     }
     if (leftTile == '#') {
         this->collisionSide.LEFT = true;
         std::cout << "Colliding left\n"; // DBG
+        setPos(player, playerX, playerY);
     }
     if (topTile == '#') {
         this->collisionSide.TOP = true;
         std::cout << "Colliding top\n"; // DBG
+        setPos(player, playerX, playerY);
     }
     if (bottomTile == '#') {
         this->collisionSide.BOTTTOM = true;
         std::cout << "Colliding bottom\n"; // DBG
+        setPos(player, playerX, playerY);
     }
 
     // collision response

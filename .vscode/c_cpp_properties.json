@@ -10,6 +10,7 @@
                 "${workspaceFolder}/Camera/include",
                 "${workspaceFolder}/src/include",
                 "${workspaceFolder}/Player/include",
+                "${workspaceFolder}/Collision/include",
                 "${workspaceFolder}/Collision/include"
             ],
             "defines": [],

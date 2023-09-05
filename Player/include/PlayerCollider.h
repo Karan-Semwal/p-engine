@@ -11,7 +11,7 @@ public:
     ~PlayerCollider() { }
 
     void update(Player& player, Tilemap& map);
-    void onColliding() override;
+    void onColliding();
 
 public:
     CollisionSide collisionSide;
