@@ -1,9 +1,37 @@
 #pragma once
+#include <SFML/Graphics.hpp>
+#include <box2d/box2d.h>
 #include <cmath>
 #include <random>
-#include <SFML/Graphics.hpp>
 
-#define PI 3.14
+inline constexpr float scale = 30.f;
+inline constexpr float PI = 3.14f;
+
+float toPixel(float meterData)
+{
+    return meterData * scale;
+}
+
+float toMeter(float pixelData)
+{
+    return pixelData / scale;
+}
+
+b2Vec2 tobv(const sf::Vector2f& sfVec2) {
+    b2Vec2 vec2;
+    vec2.x = sfVec2.x / scale;
+    vec2.y = sfVec2.y / scale;
+    return vec2;
+}
+
+sf::Vector2f tosfv(const b2Vec2& b2ve2) {
+    sf::Vector2f vec2;
+    vec2.x = b2ve2.x * scale;
+    vec2.y = b2ve2.y * scale;
+    return vec2;
+}
+
+// ------------------------------------------------------ //
 
 sf::Vector2f operator+(sf::Vector2f& v1, sf::Vector2f& v2)
 {
@@ -73,7 +101,7 @@ float DegToRadian(float degree)
     return degree * PI / 180.0f;
 }
 
-int random_integer(int min, int max)
+int randomInteger(int min, int max)
 {
     static std::random_device rd;
     static std::mt19937 gen(rd());
@@ -85,22 +113,20 @@ int random_integer(int min, int max)
 sf::Vector2f randomVector2f(int min, int max)
 {
     sf::Vector2f dir;
-    dir.x = random_integer(min, max);
-    dir.y = random_integer(min, max);
+    dir.x = randomInteger(min, max);
+    dir.y = randomInteger(min, max);
     return dir;
 }
 
-void operator<<(std::ostream& os, sf::Vector2f& v)
+void operator<<(std::ostream& os, sf::Vector2f v)
 {
     os << v.x << ", " << v.y << std::endl;
 }
 
-void operator<<(std::ostream& os, const sf::Vector2f& v)
-{
-    os << v.x << ", " << v.y << std::endl;
-}
-
-void operator<<(std::ostream& os, sf::Vector2i& v)
-{
-    os << v.x << ", " << v.y << std::endl;
+sf::Color randomColor() {
+    sf::Color color;
+    color.r = randomInteger(0, 255);
+    color.g = randomInteger(0, 255);
+    color.b = randomInteger(0, 255);
+    return color;
 }

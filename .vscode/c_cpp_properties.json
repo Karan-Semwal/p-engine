@@ -11,7 +11,11 @@
                 "${workspaceFolder}/src/include",
                 "${workspaceFolder}/Player/include",
                 "${workspaceFolder}/Collision/include",
-                "${workspaceFolder}/Collision/include"
+                "${workspaceFolder}/Collision/include",
+                "${workspaceFolder}/Physics/include",
+                "${workspaceFolder}/external/box2d/include",
+                "${workspaceFolder}/Map/include",
+                "${workspaceFolder}/Physics/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
