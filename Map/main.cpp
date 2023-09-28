@@ -2,17 +2,13 @@
 #include "Player.h"
 #include "LevelManager.h"
 #include "Global.h"
-#include "Util.h"
 #include "Camera.h"
-#include "Physics.h"
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(16 * TILE_WIDTH_SIZE, 9 * TILE_HEIGHT_SIZE), 
     "Testing");
     window.setFramerateLimit(60);
-    // Physics
-    Physics physics;
 
     // LM
     LevelManager levelm;

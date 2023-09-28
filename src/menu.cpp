@@ -1,7 +1,7 @@
 #include "menu.h"
 
 Menu::Menu(sf::RenderWindow& win)
-  : window(win),
+  : window(&win),
     playButton(win),
     exitButton(win),
     playButText(),
@@ -36,7 +36,7 @@ void Menu::update()
 
     if (exitButton.isClicked()) {
         std::cout << "Exit clicked!\n";
-        window.close();
+        window->close();
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))

@@ -1,14 +1,12 @@
 #include "Player.h"
 #include "PlayerController.h"
 #include "PlayerAnimator.h"
-#include "PlayerCollider.h"
 
 Player::Player()
     : m_player(),
       m_veloctiy(3.5f, 3.5f),
       hitbox(sf::Vector2f{0., 0.}, sf::Vector2f{0., 0.}),
       m_animator(new PlayerAnimator(*this, TextureManager::get_player_texture(), 4, 4, 0.15f)),
-      m_collider(new PlayerCollider(*this)),
       m_controller(new PlayerController()),
       pstate(PlayerState::IDLE),
       pfacingDirection(PlayerFacingDirection::RIGHT)
@@ -26,7 +24,6 @@ Player::~Player()
 {
     delete m_animator;
     delete m_controller;
-    delete m_collider;
 }
 
 void Player::initTexture()
@@ -65,7 +62,6 @@ void Player::setVelocity(const sf::Vector2f& vel)
 void Player::update(Tilemap& map)
 {
     hitbox.update({m_player.getPosition().x, m_player.getPosition().y});
-    m_collider->update(*this, map);
     m_controller->update(*this, map);
     m_animator->switchAnimation(*this);
     m_animator->update();

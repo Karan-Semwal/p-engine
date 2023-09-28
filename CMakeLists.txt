@@ -4,7 +4,7 @@ project(sfml-testing)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_FLAGS "-g")
+set(CMAKE_CXX_FLAGS "-g -Wall")
 
 # Add the source files to your project
 file(GLOB SOURCE_FILES
@@ -22,7 +22,6 @@ add_executable(${PROJECT_NAME} ${SOURCE_FILES})
 # Set the include directories
 target_include_directories(${PROJECT_NAME} PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/
-    ${CMAKE_CURRENT_SOURCE_DIR}/external/box2d/include
     ${CMAKE_CURRENT_SOURCE_DIR}/src/include
     ${CMAKE_CURRENT_SOURCE_DIR}/Player/include
     ${CMAKE_CURRENT_SOURCE_DIR}/Map/include
@@ -36,7 +35,6 @@ find_package(SFML 2.5 COMPONENTS system window graphics REQUIRED)
 
 # Link SFML libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/external/box2d/lib/libbox2d.a"
     sfml-system 
     sfml-window 
     sfml-graphics

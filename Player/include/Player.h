@@ -8,7 +8,6 @@
 // Forward declaration
 class PlayerAnimator;
 class PlayerController;
-class PlayerCollider;
 
 class Player
 {
@@ -35,6 +34,5 @@ private:
     sf::Vector2f   m_veloctiy;
     
     PlayerController* m_controller; // handle player input
-    PlayerCollider*   m_collider;   // handle player collisions
     PlayerAnimator*   m_animator;   // handle player animations
 };

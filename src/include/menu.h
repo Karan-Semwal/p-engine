@@ -21,7 +21,7 @@ private:
 private:
     Button playButton;
     Button exitButton;
-    sf::RenderWindow& window;
+    sf::RenderWindow* window;
     
     sf::Texture playButText;
     sf::Texture exitButText;

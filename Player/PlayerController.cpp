@@ -1,15 +1,6 @@
 #include "PlayerController.h"
 #include <cmath>
 
-float lerpValue(float currentValue, float targetValue, float interpolationPoint)
-{
-    currentValue += interpolationPoint;
-    if (currentValue > targetValue) {
-        return targetValue;
-    }
-    return currentValue;
-}
-
 PlayerController::PlayerController()
     : m_velocity()
 {
