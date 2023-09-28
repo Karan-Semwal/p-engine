@@ -22,6 +22,7 @@ public:
     void calcSpawnPos(); // DBG
     sf::Vector2f getMapSize() { return sf::Vector2f(mapWidth, mapHeight); }
     char getChatAtMap(int x, int y);
+    char getChatAtMap(const sf::Vector2f& pos);
 
 public:
     sf::Vector2f spawnPosition;

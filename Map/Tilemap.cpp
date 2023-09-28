@@ -1,4 +1,5 @@
 #include "Tilemap.h"
+#include <cmath>
 
 Tilemap::Tilemap(const std::string& mapData)
     : mapData(mapData)
@@ -62,6 +63,21 @@ void Tilemap::switchMap(const std::string& levelString)
 
 char Tilemap::getChatAtMap(int x, int y)
 {
+    char character = '!';
+    int index = y * cols + x;
+    if (index > 0 && index < this->mapData.size()) {
+        character = this->mapData[index];
+    }
+    else {
+        std::cout << "Invalid map index\n";
+    }
+    return character;
+}
+
+char Tilemap::getChatAtMap(const sf::Vector2f& pos)
+{
+    int x = std::round(pos.x);
+    int y = std::round(pos.y);
     char character = '!';
     int index = y * cols + x;
     if (index > 0 && index < this->mapData.size()) {

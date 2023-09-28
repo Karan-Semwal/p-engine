@@ -6,7 +6,7 @@ Hitbox::Hitbox(float x, float y, float w, float h, const sf::Color& color)
     init();
 }
 
-Hitbox::Hitbox(sf::Vector2f& pos, sf::Vector2f& size, const sf::Color& color)
+Hitbox::Hitbox(const sf::Vector2f& pos, const sf::Vector2f& size, const sf::Color& color)
     : m_size{size}, m_position{pos}, m_color{color} 
 {
     init();
@@ -32,7 +32,7 @@ void Hitbox::makeShapeTransparent() {
 
 void Hitbox::init()
 {
-    m_thickness = 5.f;
+    m_thickness = 3.f;
     m_shape.setPosition(m_position);
     m_shape.setSize(m_size);
     sf::Vector2f center(m_position.x + (m_size.x / 2.f), m_position.y + (m_size.y / 2.f));
@@ -40,10 +40,12 @@ void Hitbox::init()
     makeShapeTransparent();
 }
 
-void Hitbox::update(sf::Vector2f& pos)
+void Hitbox::update(const sf::Vector2f& pos)
 {
     m_shape.setPosition(pos);
     m_shape.setSize(m_size);
+    sf::Vector2f center(m_position.x + (m_size.x / 2.f), m_position.y + (m_size.y / 2.f));
+    m_shape.setOrigin(center); 
     makeShapeTransparent();
 }
 

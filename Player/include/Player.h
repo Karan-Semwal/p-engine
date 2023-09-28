@@ -3,6 +3,7 @@
 #include "Tilemap.h"
 #include "PlayerState.h"
 #include "TextureManager.h"
+#include "Hitbox.h"
 
 // Forward declaration
 class PlayerAnimator;
@@ -24,10 +25,12 @@ public:
     void render(sf::RenderWindow& window);
 
 public:
+    Hitbox                hitbox;
     PlayerState           pstate;
     PlayerFacingDirection pfacingDirection;
 
 private:
+    sf::Vector2f   m_size;
     sf::Sprite     m_player;
     sf::Vector2f   m_veloctiy;
     
