@@ -18,7 +18,7 @@ public:
     }
     void printmap();
     void switchMap(const std::string& levelString);
-    void renderMap(sf::RenderWindow& window);
+    void render(sf::RenderWindow& window);
     void calcSpawnPos(); // DBG
     sf::Vector2f getMapSize() { return sf::Vector2f(mapWidth, mapHeight); }
     char getChatAtMap(int x, int y);

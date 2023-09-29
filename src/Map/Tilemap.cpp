@@ -25,7 +25,7 @@ Tilemap::Tilemap(const std::string& mapData, int r, int c)
     mapHeight = tileHeight * rows;
 }
 
-void Tilemap::renderMap(sf::RenderWindow& window) 
+void Tilemap::render(sf::RenderWindow& window) 
 {
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < cols; ++col) {

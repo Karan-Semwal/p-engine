@@ -6,7 +6,7 @@
 class Camera
 {
 public:
-    Camera(Player& player, Tilemap& map, sf::Vector2f& size);
+    Camera(Player& player, Tilemap& map, const sf::Vector2f& size);
     ~Camera();
 
     void clampX();

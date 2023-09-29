@@ -4,7 +4,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/sfml-testing",
+            "program": "${workspaceFolder}/build/p-engine",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

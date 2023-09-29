@@ -1,61 +1,82 @@
-#include <cmath>
-#include <iostream>
 #include "Game.h"
+#include <string>
 
 Game::Game()
-    : window(sf::VideoMode(800, 600), "Pong", sf::Style::Close),
-      isplaying(false), mainMenu(window) {
-  setup();
+    : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "p-engine", sf::Style::Default),
+      isplaying(true),
+      m_levelManager(),
+      m_mapData(m_levelManager.loadLevel("level1.txt")),
+      m_tilemap(m_mapData, m_levelManager.getLevelRows(), m_levelManager.getLevelColumns()),
+      m_player(),
+      m_camera(m_player, m_tilemap, {16 * TILE_WIDTH_SIZE, 9 * TILE_HEIGHT_SIZE})
+{
+    setup();
 }
 
-Game::~Game() {}
-
-void Game::renderGameMenu() {
-  mainMenu.render();
-  window.display();
+Game::~Game()
+{
 }
 
-void Game::run() {
-  window.setFramerateLimit(60);
-  while (window.isOpen()) {
-    // poll events
-    processEvents();
+void Game::run()
+{
+    window.setFramerateLimit(60);
+    while (window.isOpen())
+    {
+        if (window.hasFocus())
+        {
+            // poll events
+            processEvents();
 
-    if (isplaying) {
-      update();
-      render();
+            if (isplaying)
+            {
+                update();
+                render();
+            }
+        }
     }
-
-    else
-      renderGameMenu();
-  }
 }
 
-void Game::resetGame() {
-  isplaying = false;
-  setup();
+void Game::resetGame()
+{
+    isplaying = false;
+    setup();
 }
 
-void Game::processEvents() {
-  static sf::Event event;
-  while (window.pollEvent(event)) {
-    if (event.type == sf::Event::Closed)
-      window.close();
-  }
+void Game::setup()
+{
+    this->m_player.setVelocity(sf::Vector2f(7.f, 7.f));
+    this->m_player.getObject().setPosition(928.f, 472.f);
 }
 
-void Game::update() {
-  // TODO: UPDATE
+void Game::processEvents()
+{
+    static sf::Event event;
+    while (window.pollEvent(event))
+    {
+        if (event.type == sf::Event::Closed)
+            window.close();
+    }
 }
 
-void Game::render() {
-  window.clear();
 
-  // TODO: DRAW
+// ------------------ Update ------------------ //
 
-  window.display();
+void Game::update()
+{
+    m_player.update(m_tilemap);
+    m_camera.update(m_player);
 }
 
-void Game::setup() {
-  
+
+// ------------------ Render ------------------ //
+
+void Game::render()
+{
+    window.clear();
+
+    this->m_tilemap.render(window);
+    this->m_camera.render(window);
+    this->m_player.render(window);
+
+    window.display();
 }

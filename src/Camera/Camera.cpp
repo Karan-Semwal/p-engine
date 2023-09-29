@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-Camera::Camera(Player& player, Tilemap& map, sf::Vector2f& size)
+Camera::Camera(Player& player, Tilemap& map, const sf::Vector2f& size)
     : m_maxX(map.getMapSize().x), m_minX(0),
       m_maxY(map.getMapSize().y), m_minY(0) 
 {

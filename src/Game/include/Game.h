@@ -1,6 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Menu.h"
+#include "Tilemap.h"
+#include "Player.h"
+#include "Global.h"
+#include "Camera.h"
+#include "LevelManager.h"
 
 class Game
 {
@@ -10,8 +14,6 @@ public:
 
 	unsigned int getWindowWidth()  const { return window.getSize().x; }
 	unsigned int getWindowHeight() const { return window.getSize().y; }
-
-    void renderGameMenu();
 
 	void run();
 	void resetGame();
@@ -25,5 +27,10 @@ private:
 private:
 	sf::RenderWindow window;
 	bool isplaying;
-    Menu mainMenu;
+
+	LevelManager m_levelManager;
+	std::string  m_mapData;
+	Tilemap		 m_tilemap;
+	Player 		 m_player;
+	Camera		 m_camera;
 };

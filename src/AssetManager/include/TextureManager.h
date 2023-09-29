@@ -3,9 +3,9 @@
 #include <iostream>
 #include <string>
 
-const std::string TEXT_PATH_PLAYER = "/home/prime/Desktop/dev/cpp/sfml-testing/res/character.png";
-const std::string TEXT_PATH_DIRT   = "/home/prime/Desktop/dev/cpp/sfml-testing/res/dirt.png";
-const std::string TEXT_PATH_WALL   = "/home/prime/Desktop/dev/cpp/sfml-testing/res/wall.png";
+const std::string TEXT_PATH_PLAYER = "../res/character.png";
+const std::string TEXT_PATH_DIRT   = "../res/dirt.png";
+const std::string TEXT_PATH_WALL   = "../res/wall.png";
 
 class TextureManager
 {
