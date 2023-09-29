@@ -1,4 +1,4 @@
-#include "button.h"
+#include "Button.h"
 
 Button::Button(sf::RenderWindow& win)
     : window(win)

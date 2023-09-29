@@ -31,3 +31,6 @@
 #build
 bin 
 build
+
+#extras
+game_uml.drawio.png

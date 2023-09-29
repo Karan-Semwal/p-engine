@@ -1,6 +1,6 @@
-#include "game.h"
 #include <cmath>
 #include <iostream>
+#include "Game.h"
 
 Game::Game()
     : window(sf::VideoMode(800, 600), "Pong", sf::Style::Close),
@@ -56,4 +56,6 @@ void Game::render() {
   window.display();
 }
 
-void Game::setup() {}
+void Game::setup() {
+  
+}

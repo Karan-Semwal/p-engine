@@ -1,77 +1,77 @@
-// #include <iostream>
-// #include <SFML/Graphics.hpp>
+#include <iostream>
+#include <SFML/Graphics.hpp>
 
-// static constexpr float WIDTH  = 800.f;
-// static constexpr float HEIGHT = 400.f;
+static constexpr float WIDTH  = 800.f;
+static constexpr float HEIGHT = 400.f;
 
-// class Parallax
-// {
-// public:
-//     Parallax()
-//         : m_velocity(), m_object(nullptr), m_objects()
-//     {
-//     }
+class Parallax
+{
+public:
+    Parallax()
+        : m_velocity(), m_object(nullptr), m_objects()
+    {
+    }
 
-//     Parallax(sf::RectangleShape* object, sf::Vector2f velocity)
-//         : m_velocity(velocity), m_object(object), m_objects()
-//     {
-//         setup();
-//     }
+    Parallax(sf::RectangleShape* object, sf::Vector2f velocity)
+        : m_velocity(velocity), m_object(object), m_objects()
+    {
+        setup();
+    }
 
-//     ~Parallax() {}
+    ~Parallax() {}
 
-//     void init(sf::RectangleShape* object, sf::Vector2f velocity)
-//     {
-//         m_object = object;
-//         m_velocity = velocity;
+    void init(sf::RectangleShape* object, sf::Vector2f velocity)
+    {
+        m_object = object;
+        m_velocity = velocity;
 
-//         setup();
-//     }
+        setup();
+    }
 
-//     void updateParallax()
-//     {
-//         if (m_object != nullptr) 
-//         {
-//             for (auto& obj : m_objects) {
-//                 obj.move(m_velocity);
-//                 if (obj.getPosition().x <= -1 * WIDTH / 2.f)
-//                 {
-//                     obj.setPosition(WIDTH + WIDTH / 2.f, obj.getPosition().y);
-//                 }
-//             }
-//         } else {
-//             std::cout << "The parallax object is nullptr\n";
-//         }
-//     }
+    void updateParallax()
+    {
+        if (m_object != nullptr) 
+        {
+            for (auto& obj : m_objects) {
+                obj.move(m_velocity);
+                if (obj.getPosition().x <= -1 * WIDTH / 2.f)
+                {
+                    obj.setPosition(WIDTH + WIDTH / 2.f, obj.getPosition().y);
+                }
+            }
+        } else {
+            std::cout << "The parallax object is nullptr\n";
+        }
+    }
 
-//     void renderParallax(sf::RenderWindow& window) 
-//     {
-//         if (m_object != nullptr) 
-//         {
-//             for (auto& i : m_objects)
-//                 window.draw(i);
-//         }
-//     }
+    void renderParallax(sf::RenderWindow& window) 
+    {
+        if (m_object != nullptr) 
+        {
+            for (auto& i : m_objects)
+                window.draw(i);
+        }
+    }
 
-// private:
-//     void setup()
-//     {
-//         for (size_t i = 0; i < 3; i++) {
-//             m_objects.push_back(*m_object);
-//         }
+private:
+    void setup()
+    {
+        for (size_t i = 0; i < 3; i++) {
+            m_objects.push_back(*m_object);
+        }
 
-//         // initial positions of background objects (clouds)
-//         m_objects[0].setPosition(-1 * WIDTH / 2.f, HEIGHT / 2.f);
-//         m_objects[1].setPosition(WIDTH / 2.f, HEIGHT / 2.f);
-//         m_objects[2].setPosition(WIDTH + WIDTH / 2.f, HEIGHT / 2.f);
-//     }
+        // initial positions of background objects (clouds)
+        m_objects[0].setPosition(-1 * WIDTH / 2.f, HEIGHT / 2.f);
+        m_objects[1].setPosition(WIDTH / 2.f, HEIGHT / 2.f);
+        m_objects[2].setPosition(WIDTH + WIDTH / 2.f, HEIGHT / 2.f);
+    }
 
-// private:
-//     sf::RectangleShape* m_object;
-//     std::vector<sf::RectangleShape> m_objects;
-//     sf::Vector2f m_velocity;
+private:
+    sf::RectangleShape* m_object;
+    std::vector<sf::RectangleShape> m_objects;
+    sf::Vector2f m_velocity;
 
-// };
+};
 
 // struct Backg
 // {

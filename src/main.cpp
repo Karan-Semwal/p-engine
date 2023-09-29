@@ -14,8 +14,8 @@ int main()
     LevelManager levelm;
 
     // Map
-    std::string mapData = levelm.loadLevel("../Map/Levels/level2.txt");
-    Tilemap map(mapData, 13, 61);
+    std::string mapData = levelm.loadLevel("level1.txt");
+    Tilemap map(mapData, levelm.getLevelRows(), levelm.getLevelColumns());
     // map.printmap(); // DBG
 
     // Player

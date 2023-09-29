@@ -13,11 +13,14 @@ public:
     std::string getLevelFilePath();
     std::string loadLevel(const std::string& levelFile);
     void switchLevel(Tilemap& map);
+    int getLevelColumns()  const { return m_levelWidth;  }
+    int getLevelRows()     const { return m_levelHeight; }
 
 public:
     int currentLevel = 1;
 
 private:
-    std::string LEVEL_PATH_PREFIX = "../Map/Levels/";
-    int MAX_LEVELS = 3;
+    const int MAX_LEVELS = 3;
+    int m_levelWidth  = 0;
+    int m_levelHeight = 0;
 };
