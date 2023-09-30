@@ -2,10 +2,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include "Global.h"
 
-const std::string TEXT_PATH_PLAYER = "../res/character.png";
-const std::string TEXT_PATH_DIRT   = "../res/dirt.png";
-const std::string TEXT_PATH_WALL   = "../res/wall.png";
+const std::string TEXT_PATH_PLAYER = TEXTURE_DIR + "character.png";
+const std::string TEXT_PATH_DIRT   = TEXTURE_DIR + "dirt.png";
+const std::string TEXT_PATH_WALL   = TEXTURE_DIR + "wall.png";
 
 class TextureManager
 {

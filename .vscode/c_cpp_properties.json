@@ -17,7 +17,8 @@
                 "${workspaceFolder}/src/Ui/include",
                 "${workspaceFolder}/src/Player/include",
                 "${workspaceFolder}/src/Player/include",
-                "${workspaceFolder}/src/Map/include"
+                "${workspaceFolder}/src/Map/include",
+                "${workspaceFolder}/src/Utils/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",

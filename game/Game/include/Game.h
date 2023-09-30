@@ -1,10 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Tilemap.h"
-#include "Player.h"
-#include "Global.h"
-#include "Camera.h"
-#include "LevelManager.h"
+#include "pengine.h" 
 
 class Game
 {
