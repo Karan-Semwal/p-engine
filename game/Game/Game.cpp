@@ -3,6 +3,7 @@
 
 Game::Game()
     : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "p-engine", sf::Style::Default),
+      m_event(),
       isplaying(true),
       m_levelManager(),
       m_mapData(m_levelManager.loadLevel("level1.txt")),
@@ -50,10 +51,9 @@ void Game::setup()
 
 void Game::processEvents()
 {
-    static sf::Event event;
-    while (window.pollEvent(event))
+    while (window.pollEvent(this->m_event))
     {
-        if (event.type == sf::Event::Closed)
+        if (m_event.type == sf::Event::Closed)
             window.close();
     }
 }
@@ -63,7 +63,7 @@ void Game::processEvents()
 
 void Game::update()
 {
-    m_player.update(m_tilemap);
+    m_player.update(m_tilemap, m_event);
     m_camera.update(m_player);
 }
 

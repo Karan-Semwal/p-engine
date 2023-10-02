@@ -11,12 +11,11 @@ Player::Player()
       pstate(PlayerState::IDLE),
       pfacingDirection(PlayerFacingDirection::RIGHT)
 {
-    //initTexture();
-    m_size.x = m_player.getTextureRect().width;
-    m_size.y = m_player.getTextureRect().height;
+    m_size.x = m_player.getSize().x;
+    m_size.y = m_player.getSize().y;
     sf::Vector2f origin(m_size.x / 2.f, m_size.y / 2.f);
-    hitbox.setSize({m_size.x - 30.f, m_size.y - 50.f});
-    hitbox.setPosition({m_player.getPosition().x, m_player.getPosition().y + 20.f});
+    hitbox.setSize({m_size.x - 30.f, m_size.y - 10.f});
+    hitbox.getObject().setOrigin(origin);
     this->m_player.setOrigin(origin);
 }
 
@@ -28,7 +27,7 @@ Player::~Player()
 
 void Player::initTexture()
 {
-    m_player.setTexture(TextureManager::get_player_texture());
+    m_player.setTexture(&TextureManager::get_player_texture());
     float w = TextureManager::get_player_texture().getSize().x;
     float h = TextureManager::get_player_texture().getSize().y;
     m_player.setTextureRect(sf::IntRect(0, 0, w / 4, h / 4));
@@ -44,7 +43,7 @@ void Player::setPosition(const sf::Vector2f& pos)
     m_player.setPosition(pos);
 }
 
-sf::Sprite& Player::getObject() 
+sf::RectangleShape& Player::getObject() 
 {
     return m_player; 
 }
@@ -59,13 +58,12 @@ void Player::setVelocity(const sf::Vector2f& vel)
     this->m_veloctiy = vel;
 }
 
-void Player::update(Tilemap& map)
+void Player::update(Tilemap& map, sf::Event& event)
 {
-    hitbox.update({m_player.getPosition().x, m_player.getPosition().y});
-    m_controller->update(*this, map);
+    m_controller->update(*this, map, event);
     m_animator->switchAnimation(*this);
     m_animator->update();
-    // hitbox.update({m_player.getPosition().x, m_player.getPosition().y + 20.f});
+    hitbox.update({m_player.getPosition().x, m_player.getPosition().y});
 }
 
 void Player::render(sf::RenderWindow& window) 

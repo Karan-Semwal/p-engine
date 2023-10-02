@@ -7,8 +7,8 @@ class Animator
 {
 public:
     Animator() = delete;
-    Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, float ft);
-    Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, const sf::Vector2f& pos, float ft);
+    Animator(sf::RectangleShape& object, sf::Texture& spriteSheet, int c, int r, float ft);
+    Animator(sf::RectangleShape& object, sf::Texture& spriteSheet, int c, int r, const sf::Vector2f& pos, float ft);
     virtual ~Animator() { }
 
     void setPosition(sf::Vector2f& pos);
@@ -29,7 +29,7 @@ protected:
     float frameTime;
     Timer m_timer;
 
-    sf::Sprite&  sprite;
-    sf::Texture* texture;
-    sf::Vector2f position;
+    sf::RectangleShape&  sprite;
+    sf::Texture*         texture;
+    sf::Vector2f         position;
 };

@@ -22,6 +22,7 @@ private:
 
 private:
 	sf::RenderWindow window;
+	sf::Event m_event;
 	bool isplaying;
 
 	LevelManager m_levelManager;

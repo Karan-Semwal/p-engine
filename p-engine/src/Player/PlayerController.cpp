@@ -2,7 +2,7 @@
 #include <cmath>
 
 PlayerController::PlayerController()
-    : m_velocity()
+    : m_velocity(5.f, 5.f)
 {
 }
 
@@ -17,15 +17,14 @@ bool PlayerController::canMove(const sf::Vector2f& pos, Tilemap& map) {
     return playerTile != '#';
 }
 
-void PlayerController::update(Player& player, Tilemap& map)
+void PlayerController::update(Player& player, Tilemap& map, sf::Event& event)
 {
     sf::Vector2f pos = player.getPosition();
-    sf::Vector2f vel = player.getVelocity();
-
-    sf::Vector2f hitboxPos = player.hitbox.getPosition();
+    sf::Vector2f vel { m_currentVelocity };
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
+        m_currentVelocity.y = lerpValue(m_currentVelocity.y, m_velocity.y, m_velocityLerpValue);
         player.pstate = PlayerState::MOVE;
         player.pfacingDirection = PlayerFacingDirection::UP;
         if (canMove({player.hitbox.getTopLeft().x, player.hitbox.getTopLeft().y - vel.y} , map)) {
@@ -35,6 +34,7 @@ void PlayerController::update(Player& player, Tilemap& map)
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
+        m_currentVelocity.x = lerpValue(m_currentVelocity.x, m_velocity.x, m_velocityLerpValue);
         player.pstate = PlayerState::MOVE;
         player.pfacingDirection = PlayerFacingDirection::LEFT;
         if (canMove({player.hitbox.getTopLeft().x - vel.x, player.hitbox.getTopLeft().y} , map)) {
@@ -44,6 +44,7 @@ void PlayerController::update(Player& player, Tilemap& map)
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
+        m_currentVelocity.y = lerpValue(m_currentVelocity.y, m_velocity.y, m_velocityLerpValue);
         player.pstate = PlayerState::MOVE;
         player.pfacingDirection = PlayerFacingDirection::DOWN;
         if (canMove({player.hitbox.getBottomLeft().x, player.hitbox.getBottomLeft().y + vel.y} , map)) {
@@ -53,6 +54,7 @@ void PlayerController::update(Player& player, Tilemap& map)
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
+        m_currentVelocity.x = lerpValue(m_currentVelocity.x, m_velocity.x, m_velocityLerpValue);
         player.pstate = PlayerState::MOVE;
         player.pfacingDirection = PlayerFacingDirection::RIGHT;
         if (canMove({player.hitbox.getTopRight().x + vel.x, player.hitbox.getTopRight().y} , map)) {
@@ -60,62 +62,32 @@ void PlayerController::update(Player& player, Tilemap& map)
                 player.setPosition({pos.x + vel.x, pos.y});
         }
     }
-    else
-    {
+    else {
         player.pstate = PlayerState::IDLE;            
     }
-
-    // pos = pos + m_currentVelocity;
-    // player.setPosition(pos);
     
-    // TODO: reset the current velocity to zero when key is released
+    // reset velocity after key released (reset velocity lerp)
+    if (event.type == sf::Event::KeyReleased)
+    {
+        if (event.key.code == sf::Keyboard::A || event.key.code == sf::Keyboard::D || 
+            event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::S) 
+        {
+            m_currentVelocity = {0.f, 0.f};
+        }
+    }
 }
 
-
-// void PlayerController::update(Player& player, CollisionSide& collSide)
-// {
-//     sf::Vector2f pos = player.getPosition();
-//     sf::Vector2f vel{0.f, 0.f};
-
-//     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-//     {
-//         player.pstate = PlayerState::MOVE;
-//         player.pfacingDirection = PlayerFacingDirection::UP;
-//         if (!collSide.TOP) {
-//             m_currentVelocity.y -= lerpValue(m_currentVelocity.y, player.getVelocity().y, this->m_velocityLerpValue);
-//         }
-//     }
-//     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-//     {
-//         player.pstate = PlayerState::MOVE;
-//         player.pfacingDirection = PlayerFacingDirection::LEFT;
-//         if (!collSide.LEFT) {
-//             m_currentVelocity.x -= lerpValue(m_currentVelocity.x, player.getVelocity().x, this->m_velocityLerpValue);
-//         }
-//     }
-//     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-//     {
-//         player.pstate = PlayerState::MOVE;
-//         player.pfacingDirection = PlayerFacingDirection::DOWN;
-//         if (!collSide.BOTTTOM) {
-//             m_currentVelocity.y = lerpValue(m_currentVelocity.y, player.getVelocity().y, this->m_velocityLerpValue);
-//         }
-//     }
-//     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-//     {
-//         player.pstate = PlayerState::MOVE;
-//         player.pfacingDirection = PlayerFacingDirection::RIGHT;
-//         if (!collSide.RIGHT) {
-//             m_currentVelocity.x = lerpValue(m_currentVelocity.x, player.getVelocity().x, this->m_velocityLerpValue);
-//         }
-//     }
-//     else
-//     {
-//         player.pstate = PlayerState::IDLE;            
-//     }
-
-//     pos = pos + m_currentVelocity;
-//     player.setPosition(pos);
+void PlayerController::gravity(Player& player, Tilemap& map) {
     
-//     // TODO: reset the current velocity to zero when key is released
-// }
+    if (isInAir) {
+        GRAVITY = lerpValue(GRAVITY, GRAVITY_LIMIT, GRAVITY_LERP_VALUE);
+        sf::Vector2f pos = player.getPosition();
+        if (canMove({player.hitbox.getBottomLeft().x, player.hitbox.getBottomLeft().y + GRAVITY} , map)) {
+            if (canMove({player.hitbox.getBottomRight().x, player.hitbox.getBottomRight().y + GRAVITY} , map))
+                player.setPosition({pos.x, pos.y + GRAVITY});
+        }
+    }
+    else {
+        GRAVITY = 0.f;
+    }
+}

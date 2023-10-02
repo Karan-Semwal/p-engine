@@ -1,6 +1,6 @@
 #include "Animator.h"
 
-Animator::Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, float ft)
+Animator::Animator(sf::RectangleShape& object, sf::Texture& spriteSheet, int c, int r, float ft)
     : texture(&spriteSheet),
       columns(c),
       rows   (r),
@@ -12,15 +12,15 @@ Animator::Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, f
     position = sprite.getPosition();
     this->setPosition(position);
     m_timer.start();
-    sprite.setScale(0.75f, 0.75f); // set size of player
-    sprite.setTexture(*texture);
+    sprite.setSize({64.f, 64.f});
+    sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, texture->getSize().x / columns, texture->getSize().y / rows));
  
     sf::Vector2f centre(sprite.getTextureRect().width / 2.f, sprite.getTextureRect().height / 2.f);
     sprite.setOrigin(centre);
 }
 
-Animator::Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, const sf::Vector2f& pos, float ft)
+Animator::Animator(sf::RectangleShape& object, sf::Texture& spriteSheet, int c, int r, const sf::Vector2f& pos, float ft)
     : texture(&spriteSheet),
       position(pos),
       columns(c),
@@ -31,7 +31,8 @@ Animator::Animator(sf::Sprite& object, sf::Texture& spriteSheet, int c, int r, c
       m_timer()
 {
     m_timer.start();
-    sprite.setTexture(*texture);
+    sprite.setSize({64.f, 64.f});
+    sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, texture->getSize().x / columns, texture->getSize().y / rows));
  
     sf::Vector2f centre(sprite.getTextureRect().width / 2.f, sprite.getTextureRect().height / 2.f);
@@ -47,7 +48,7 @@ void Animator::update()
             currentFrame++;
             m_timer.reset();
 
-            if (currentFrame >= columns) { // if (currentFrame > columns * rows) { // DBG
+            if (currentFrame >= columns) {
                 currentFrame = 0;
                 isAlive = false;
                 return;

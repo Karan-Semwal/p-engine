@@ -17,10 +17,10 @@ public:
     void initTexture();
     sf::Vector2f getPosition() const;
     void setPosition(const sf::Vector2f& pos);
-    sf::Sprite& getObject();
+    sf::RectangleShape& getObject();
     sf::Vector2f& getVelocity();
     void setVelocity(const sf::Vector2f& vel);
-    void update(Tilemap& map);
+    void update(Tilemap& map, sf::Event& event);
     void render(sf::RenderWindow& window);
 
 public:
@@ -29,9 +29,9 @@ public:
     PlayerFacingDirection pfacingDirection;
 
 private:
-    sf::Vector2f   m_size;
-    sf::Sprite     m_player;
-    sf::Vector2f   m_veloctiy;
+    sf::Vector2f           m_size;
+    sf::RectangleShape     m_player;
+    sf::Vector2f           m_veloctiy;
     
     PlayerController* m_controller; // handle player input
     PlayerAnimator*   m_animator;   // handle player animations

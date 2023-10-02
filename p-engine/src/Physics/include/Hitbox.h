@@ -11,13 +11,15 @@ public:
 
     void init();
     void makeShapeTransparent();
-    void setColor(const sf::Color& color) { m_color = color; }
-    void setSize(const sf::Vector2f& size) { m_size = size; }
-    void setPosition(const sf::Vector2f& pos) { m_position = pos; }
-    void setThickness(float borderThicknessValue) { m_thickness = borderThicknessValue; }
-    sf::Color getColor() const { return m_color; }
-    sf::Vector2f getSize() const { return m_size; }
-    sf::Vector2f getPosition() const { return m_position; }
+    void setColor(const sf::Color& color)           { m_color = color; }
+    void setSize(const sf::Vector2f& size)          { m_size = size; }
+    void setPosition(const sf::Vector2f& pos)       { m_position = pos; }
+    void setThickness(float borderThicknessValue)   { m_thickness = borderThicknessValue; }
+    sf::Color getColor()            const { return m_color; }
+    sf::Vector2f getSize()          const { return m_size; }
+    sf::Vector2f getPosition()      const { return m_position; }
+    sf::RectangleShape& getObject()       { return m_shape; }
+    
     void update(const sf::Vector2f& pos);
     void render(sf::RenderTarget& target);
 

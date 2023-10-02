@@ -63,7 +63,7 @@ void PlayerAnimator::update()
             currentFrame++;
             m_timer.reset();
 
-            if (currentFrame >= currentColumn) { // DBG
+            if (currentFrame >= currentColumn) {
                 currentFrame = 0;
             }
 

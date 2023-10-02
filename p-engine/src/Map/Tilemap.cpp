@@ -8,7 +8,6 @@ Tilemap::Tilemap(const std::string& mapData)
     tileHeight = TILE_HEIGHT_SIZE;
     rows = 9;
     cols = 16;
-    calcSpawnPos();
     mapWidth  = tileWidth  * cols;
     mapHeight = tileHeight * rows;
 }
@@ -20,7 +19,6 @@ Tilemap::Tilemap(const std::string& mapData, int r, int c)
     tileHeight = TILE_HEIGHT_SIZE;
     rows = r;
     cols = c;
-    calcSpawnPos();
     mapWidth  = tileWidth  * cols;
     mapHeight = tileHeight * rows;
 }
@@ -87,16 +85,4 @@ char Tilemap::getChatAtMap(const sf::Vector2f& pos)
         std::cout << "Invalid map index\n";
     }
     return character;
-}
-
-void Tilemap::calcSpawnPos()
-{
-    for (int row = 0; row < rows; ++row)
-        for (int col = 0; col < cols; ++col) {
-            char tileType = mapData[row * cols + col];
-            if (tileType == '?') {
-                spawnPosition.x = row;
-                spawnPosition.y = col;
-            }
-        }
 }
