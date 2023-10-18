@@ -1,29 +1,34 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <functional>
 
 class Button
 {
 public:
-    Button(sf::RenderWindow& win);
-    Button(sf::RenderWindow& win, const sf::Texture& texture);
-    ~Button();
+    Button() = delete;
+    Button(sf::RenderWindow& window, float x, float y, float w, float h);
+    Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size);
+    ~Button() {}
 
     bool isClicked();
-    bool mouseIsOverButton();
+    void onClick(std::function<void()> func);
 
-    sf::RectangleShape& getButton() { return button; }
-    
-    void setButtonPos(const sf::Vector2f& pos);
+    sf::RectangleShape& getButtonShape() { return m_button; }
     void setButtonText(const sf::Texture& texture);
-    void setButtonSize(const sf::Vector2f& size);
 
-    void render();
-
-private:
+    void render(sf::RenderWindow& window);
     void init();
 
+public:
+    float x, y;
+    float w, h;
+    bool isSelected;
+    //sf::Keyboard::Key pressKey;
+
 private:
-    sf::RectangleShape button;
-    sf::Texture buttonText;
-    sf::RenderWindow& window;
+    bool mouseIsOverButton();
+
+private:
+    sf::RenderWindow* m_window;
+    sf::RectangleShape m_button;
 };

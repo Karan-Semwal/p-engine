@@ -1,20 +1,21 @@
 #include "Button.h"
 
-Button::Button(sf::RenderWindow& win)
-    : window(win)
+Button::Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size)
+    : m_window(&window)
 {
+    setButtonText(texture);
+    //pressKey = sf::Keyboard::Left;
+    m_button.setTexture(&texture);
+
+    this->x = position.x;
+    this->y = position.y;
+    this->w = size.x;
+    this->h = size.y;
+
     init();
 }
 
-Button::Button(sf::RenderWindow& win, const sf::Texture& texture)
-    : buttonText(texture),
-      window(win)
-{
-    init();
-    button.setTexture(&texture);
-}
-
-Button::~Button()
+Button::Button(sf::RenderWindow& window, float x, float y, float w, float h)
 {
 }
 
@@ -27,38 +28,37 @@ bool Button::isClicked()
     return false;
 }
 
+void Button::onClick(std::function<void()> func)
+{
+    if (this->isClicked()) {
+        func();
+    }
+}
+
 bool Button::mouseIsOverButton()
 {
-    return (button.getGlobalBounds().contains(
-        sf::Mouse::getPosition(window).x,
-        sf::Mouse::getPosition(window).y)
+    return (m_button.getGlobalBounds().contains(
+        sf::Mouse::getPosition(*m_window).x,
+        sf::Mouse::getPosition(*m_window).y)
     );
 }
 
-void Button::render() 
+void Button::render(sf::RenderWindow& window) 
 {
-    window.draw(button);
+    window.draw(m_button);
 }
 
 void Button::init()
 {
-    button = sf::RectangleShape();
-    button.setPosition(sf::Vector2f(400, 300));
-    button.setSize(sf::Vector2f(200.f, 50.f));
-    button.setFillColor(sf::Color::Blue);
+    m_button = sf::RectangleShape();
+    m_button.setPosition(x, y);
+    m_button.setSize({ w, h });
+    m_button.setFillColor(sf::Color::Blue);
     
-    sf::Vector2f centre = sf::Vector2f(button.getSize().x / 2.f, button.getSize().x / 2.f);
-    button.setOrigin(centre);
-}
-
-void Button::setButtonPos(const sf::Vector2f& pos) {
-    button.setPosition(pos);
+    sf::Vector2f centre = sf::Vector2f(m_button.getSize().x / 2.f, m_button.getSize().x / 2.f);
+    m_button.setOrigin(centre);
 }
 
 void Button::setButtonText(const sf::Texture& texture) {
-    button.setTexture(&texture);
-}
-
-void Button::setButtonSize(const sf::Vector2f& size) {
-    button.setSize(size);
+    m_button.setTexture(&texture);
 }

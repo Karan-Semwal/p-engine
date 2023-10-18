@@ -17,6 +17,7 @@ file(GLOB SOURCE_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils/*cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/AssetManager/*cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Animation/*cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/GameStates/*cpp
 )
 
 # Add the executable target
@@ -33,6 +34,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils/include
     ${CMAKE_CURRENT_SOURCE_DIR}/src/AssetManager/include
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Animation/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/GameStates/include
 )
 
 # Find SFML package
