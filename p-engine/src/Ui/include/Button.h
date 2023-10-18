@@ -10,6 +10,17 @@ public:
     Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size);
     ~Button() {}
 
+    class ClassName {
+    public:
+        ClassName() {
+            // Constructor
+        }
+    
+        ~ClassName() {
+            // Destructor
+        }
+    };
+
     bool isClicked();
     void onClick(std::function<void()> func);
 
