@@ -6,7 +6,7 @@ class Button
 {
 public:
     Button() = delete;
-    Button(sf::RenderWindow& window, float x, float y, float w, float h);
+    Button(sf::RenderWindow& window, const sf::Texture& texture, float x, float y, float w, float h);
     Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size);
     ~Button() {}
 

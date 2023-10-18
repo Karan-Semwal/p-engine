@@ -15,8 +15,19 @@ Button::Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::V
     init();
 }
 
-Button::Button(sf::RenderWindow& window, float x, float y, float w, float h)
+Button::Button(sf::RenderWindow& window, const sf::Texture& texture, float x, float y, float w, float h)
+    : m_window(&window)
 {
+    setButtonText(texture);
+    //pressKey = sf::Keyboard::Left;
+    m_button.setTexture(&texture);
+
+    this->x = x;
+    this->y = y;
+    this->w = w;
+    this->h = h;
+
+    init();
 }
 
 bool Button::isClicked()
