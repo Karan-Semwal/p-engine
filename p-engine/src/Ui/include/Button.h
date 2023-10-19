@@ -10,33 +10,25 @@ public:
     Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size);
     ~Button() {}
 
-    class ClassName {
-    public:
-        ClassName() {
-            // Constructor
-        }
-    
-        ~ClassName() {
-            // Destructor
-        }
-    };
-
     bool isClicked();
-    void onClick(std::function<void()> func);
-
+    void onClick();
+    void onFocus();
     sf::RectangleShape& getButtonShape() { return m_button; }
     void setButtonText(const sf::Texture& texture);
-
+    void update();
     void render(sf::RenderWindow& window);
-    void init();
-
+    void init(std::function<void()> onClickFunction, std::function<void()> onFocusFunction);
+    
 public:
     float x, y;
     float w, h;
-    bool isSelected;
+    bool isFocused;
+    std::function<void()> onClickFunc;
+    std::function<void()> onFocusFunc;
     //sf::Keyboard::Key pressKey;
 
 private:
+    void setUp();
     bool mouseIsOverButton();
 
 private:
