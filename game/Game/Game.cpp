@@ -2,9 +2,7 @@
 #include <string>
 
 Game::Game()
-    : window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "p-engine", sf::Style::Default),
-      m_event(),
-      isplaying(true),
+    : isplaying(true),
       m_levelManager(),
       m_mapData(m_levelManager.loadLevel("level1.txt")),
       m_tilemap(m_mapData, m_levelManager.getLevelRows(), m_levelManager.getLevelColumns()),
@@ -16,25 +14,6 @@ Game::Game()
 
 Game::~Game()
 {
-}
-
-void Game::run()
-{
-    window.setFramerateLimit(60);
-    while (window.isOpen())
-    {
-        if (window.hasFocus())
-        {
-            // poll events
-            processEvents();
-
-            if (isplaying)
-            {
-                update();
-                render();
-            }
-        }
-    }
 }
 
 void Game::resetGame()
@@ -49,16 +28,6 @@ void Game::setup()
     this->m_player.getObject().setPosition(928.f, 472.f);
 }
 
-void Game::processEvents()
-{
-    while (window.pollEvent(this->m_event))
-    {
-        if (m_event.type == sf::Event::Closed)
-            window.close();
-    }
-}
-
-
 // ------------------ Update ------------------ //
 
 void Game::update()
@@ -67,16 +36,11 @@ void Game::update()
     m_camera.update(m_player);
 }
 
-
 // ------------------ Render ------------------ //
 
-void Game::render()
+void Game::render(sf::RenderWindow& window)
 {
-    window.clear();
-
     this->m_tilemap.render(window);
     this->m_camera.render(window);
     this->m_player.render(window);
-
-    window.display();
 }

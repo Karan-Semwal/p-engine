@@ -1,5 +1,5 @@
-#include "GamePlayState.h"
 #include "Game.h"
+#include "GamePlayState.h"
 
 GamePlayState::GamePlayState()
 {

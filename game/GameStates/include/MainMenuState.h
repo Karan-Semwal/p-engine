@@ -1,6 +1,4 @@
 #pragma once
-#include <vector>
-
 #include "GameState.h"
 #include "Button.h"
 
@@ -14,6 +12,11 @@ public:
     void render(sf::RenderWindow& window) override;
 
 private:
+    void init();
+
+private:
     sf::RectangleShape* m_background;
-    std::vector<Button> m_buttons;
+    Button* m_play;
+    Button* m_quit;
+
 };

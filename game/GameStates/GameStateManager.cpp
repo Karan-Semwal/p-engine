@@ -8,7 +8,6 @@ GameStateManager::GameStateManager()
 
 GameStateManager::~GameStateManager()
 {
-    delete m_gameState;
 }
 
 void GameStateManager::update()
