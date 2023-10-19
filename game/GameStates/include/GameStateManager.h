@@ -10,7 +10,7 @@ class GameStateManager
 public:
     void update();
     void render(sf::RenderWindow& window);
-    GameStateManager* getInstance();
+    static GameStateManager* getInstance();
 
 private:
     GameStateManager();

@@ -5,7 +5,7 @@ class GameState
 {
 public:
     GameState() = default;
-    ~GameState() = default;
+    virtual ~GameState() = default;
 
     virtual void update() = 0;
     virtual void render(sf::RenderWindow& window) = 0;

@@ -9,12 +9,14 @@ set(CMAKE_CXX_FLAGS "-g -Wall")
 add_subdirectory(p-engine)
 
 file(GLOB SOURCE_FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/game/Game/*cpp 
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Game/*cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/GameStates/*cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/game/main.cpp
 )
 
 include_directories(${PROJECT_NAME} PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Game/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/GameStates/include
     ${CMAKE_CURRENT_SOURCE_DIR}/p-engine/include
 )
 
