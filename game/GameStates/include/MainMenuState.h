@@ -5,7 +5,7 @@
 class MainMenuState : public GameState
 {
 public:
-    MainMenuState();
+    MainMenuState(sf::RenderWindow& window);
     ~MainMenuState();
 
     void update() override;
@@ -17,6 +17,6 @@ private:
 private:
     sf::RectangleShape* m_background;
     Button* m_play;
-    Button* m_quit;
+    Button* m_exit;
 
 };

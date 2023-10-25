@@ -1,6 +1,7 @@
 #include "GameOverState.h"
 
-GameOverState::GameOverState()
+GameOverState::GameOverState(sf::RenderWindow& window)
+    : GameState(window)
 {
 
 }

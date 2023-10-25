@@ -5,11 +5,11 @@ int main()
 {
     // Game Window
     sf::VideoMode videoMode{ WINDOW_WIDTH, WINDOW_HEIGHT };
-    sf::RenderWindow window{ videoMode, "test-game", sf::Style::Default };
+    sf::RenderWindow window{ videoMode, "test-game", sf::Style::Close };
     window.setFramerateLimit(60);
 
     // GameStateManager Instance
-    GameStateManager* gameStateManager = GameStateManager::getInstance();
+    GameStateManager* gameStateManager = GameStateManager::getInstance(window);
 
     // Game loop
     while (window.isOpen())

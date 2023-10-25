@@ -13,7 +13,7 @@ public:
     bool isClicked();
     void onClick();
     void onFocus();
-    sf::RectangleShape& getButtonShape() { return m_button; }
+    sf::RectangleShape& getButtonObject() { return m_button; }
     void setButtonText(const sf::Texture& texture);
     void update();
     void render(sf::RenderWindow& window);

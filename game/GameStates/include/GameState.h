@@ -4,11 +4,15 @@
 class GameState
 {
 public:
-    GameState() = default;
+    GameState() = delete;
+    GameState(sf::RenderWindow& window) : m_window(&window)
+    {
+    }
     virtual ~GameState() = default;
 
     virtual void update() = 0;
     virtual void render(sf::RenderWindow& window) = 0;
 
-private:
+protected:
+    sf::RenderWindow* m_window;
 };

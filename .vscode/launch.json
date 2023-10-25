@@ -4,7 +4,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/p-engine",
+            "program": "${workspaceFolder}/build/game",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

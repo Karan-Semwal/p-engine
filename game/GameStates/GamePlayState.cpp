@@ -1,7 +1,8 @@
 #include "Game.h"
 #include "GamePlayState.h"
 
-GamePlayState::GamePlayState()
+GamePlayState::GamePlayState(sf::RenderWindow& window)
+    : GameState(window)
 {
     game = new Game();
 }

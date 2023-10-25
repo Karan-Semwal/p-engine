@@ -10,10 +10,10 @@ class GameStateManager
 public:
     void update();
     void render(sf::RenderWindow& window);
-    static GameStateManager* getInstance();
+    static GameStateManager* getInstance(sf::RenderWindow& window);
 
 private:
-    GameStateManager();
+    GameStateManager(sf::RenderWindow& window);
     ~GameStateManager();
     GameStateManager(const GameStateManager&) = delete;
 

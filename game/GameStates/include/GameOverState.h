@@ -4,7 +4,7 @@
 class GameOverState : public GameState
 {
 public:
-    GameOverState();
+    GameOverState(sf::RenderWindow& window);
     ~GameOverState();
 
 private:

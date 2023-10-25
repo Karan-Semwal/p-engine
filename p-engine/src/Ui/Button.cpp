@@ -1,7 +1,7 @@
 #include "Button.h"
 
 Button::Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size)
-    : m_window(&window)
+    : m_window(&window), m_button{}
 {
     setButtonText(texture);
     //pressKey = sf::Keyboard::Left;
@@ -11,12 +11,12 @@ Button::Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::V
     this->y = position.y;
     this->w = size.x;
     this->h = size.y;
+    setUp();
 }
 
 Button::Button(sf::RenderWindow& window, const sf::Texture& texture, float x, float y, float w, float h)
-    : m_window(&window)
+    : m_window(&window), m_button{}
 {
-    setUp();
     setButtonText(texture);
     //pressKey = sf::Keyboard::Left;
     m_button.setTexture(&texture);
@@ -25,6 +25,7 @@ Button::Button(sf::RenderWindow& window, const sf::Texture& texture, float x, fl
     this->y = y;
     this->w = w;
     this->h = h;
+    setUp();
 }
 
 bool Button::isClicked()
@@ -70,8 +71,6 @@ void Button::render(sf::RenderWindow& window)
 
 void Button::setUp()
 {
-
-    m_button = sf::RectangleShape();
     m_button.setPosition(x, y);
     m_button.setSize({ w, h });
     m_button.setFillColor(sf::Color::Blue);
