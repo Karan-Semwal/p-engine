@@ -1,5 +1,6 @@
 #include <iostream>
 #include "MainMenuState.h"
+#include "GamePlayState.h"
 #include "pengine.h"
 
 MainMenuState::MainMenuState(sf::RenderWindow& window)
@@ -28,10 +29,13 @@ void MainMenuState::init()
     m_exit->getButtonObject().setFillColor(sf::Color::White);    
 }
 
-void MainMenuState::update()
+GameState* MainMenuState::update()
 {
     // std::cout << "Update" << std::endl; // DBG
-
+    if (m_play->isClicked()) {
+        return new GamePlayState{ *this->m_window };
+    }
+    return nullptr;
 }
 
 void MainMenuState::render(sf::RenderWindow& window)

@@ -9,7 +9,7 @@ public:
     GamePlayState(sf::RenderWindow& window);
     ~GamePlayState();
 
-    void update() override;
+    GameState* update() override;
     void render(sf::RenderWindow& window) override;
 
 private:

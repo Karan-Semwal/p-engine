@@ -12,7 +12,11 @@ GameStateManager::~GameStateManager()
 
 void GameStateManager::update()
 {
-    m_gameState->update();
+    GameState* newState = m_gameState->update();
+    if (newState) {
+        // swotch betweem game states based on events from current game state
+        this->m_gameState = newState;
+    } 
 }
 
 void GameStateManager::render(sf::RenderWindow& window)

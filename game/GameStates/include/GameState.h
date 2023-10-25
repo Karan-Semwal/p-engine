@@ -10,7 +10,7 @@ public:
     }
     virtual ~GameState() = default;
 
-    virtual void update() = 0;
+    virtual GameState* update() = 0;
     virtual void render(sf::RenderWindow& window) = 0;
 
 protected:

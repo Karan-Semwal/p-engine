@@ -12,9 +12,10 @@ GamePlayState::~GamePlayState()
     delete game;
 }
 
-void GamePlayState::update()
+GameState* GamePlayState::update()
 {
-
+    std::cout << "Inside GamePlayState\n"; // DBG
+    return nullptr;
 }
 
 void GamePlayState::render(sf::RenderWindow& window)

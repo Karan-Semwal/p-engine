@@ -8,7 +8,7 @@ public:
     MainMenuState(sf::RenderWindow& window);
     ~MainMenuState();
 
-    void update() override;
+    GameState* update() override;
     void render(sf::RenderWindow& window) override;
 
 private:
