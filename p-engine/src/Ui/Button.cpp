@@ -1,4 +1,5 @@
 #include "Button.h"
+#include <iostream>
 
 Button::Button(sf::RenderWindow& window, const sf::Texture& texture, const sf::Vector2f& position, const sf::Vector2f& size)
     : m_window(&window), m_button{}
@@ -52,10 +53,12 @@ void Button::onFocus() {
 
 bool Button::mouseIsOverButton()
 {
-    return (m_button.getGlobalBounds().contains(
-        sf::Mouse::getPosition(*m_window).x,
-        sf::Mouse::getPosition(*m_window).y)
-    );
+    if (m_window == nullptr)
+        std::cout << "BUTTON: Window nullptr\n";
+
+    int MousePositionX = sf::Mouse::getPosition(*m_window).x;
+    int MousePositionY = sf::Mouse::getPosition(*m_window).y;
+    return (m_button.getGlobalBounds().contains(MousePositionX, MousePositionY));
 }
 
 void Button::update()

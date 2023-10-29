@@ -8,15 +8,17 @@ GameStateManager::GameStateManager(sf::RenderWindow& window)
 
 GameStateManager::~GameStateManager()
 {
+    delete m_gameState;
 }
 
 void GameStateManager::update()
 {
-    GameState* newState = m_gameState->update();
-    if (newState) {
-        // swotch betweem game states based on events from current game state
-        this->m_gameState = newState;
-    } 
+    GameState* nextState = m_gameState->update();
+    if (nextState != nullptr) // state change took place
+    {
+        // switch betweem game states based on events from current/active game state
+        this->m_gameState = nextState;
+    }
 }
 
 void GameStateManager::render(sf::RenderWindow& window)

@@ -3,6 +3,7 @@
 sf::Texture TextureManager::playerText;
 sf::Texture TextureManager::dirtText;
 sf::Texture TextureManager::wallText;
+sf::Texture TextureManager::backgText;
 
 sf::Texture& TextureManager::get_player_texture()
 {
@@ -26,4 +27,12 @@ sf::Texture& TextureManager::get_wall_texture()
             std::cout << "Failed to load wall texture\n";
     }
     return wallText;
+}
+
+sf::Texture& TextureManager::get_backg_texture()
+{
+    if (!backgText.loadFromFile(TEXT_PATH_BACKG)) {
+        std::cout << "Failed to load wall texture\n";
+    }
+    return backgText;
 }

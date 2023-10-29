@@ -2,7 +2,7 @@
 #include <cmath>
 
 PlayerController::PlayerController()
-    : m_velocity(5.f, 5.f)
+    : m_velocity(10.f, 10.f)
 {
 }
 

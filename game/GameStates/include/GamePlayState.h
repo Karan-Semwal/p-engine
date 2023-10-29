@@ -1,6 +1,8 @@
 #pragma once
 #include "GameState.h"
 
+class Button; // DBG
+
 class Game;
 
 class GamePlayState : public GameState
@@ -13,5 +15,6 @@ public:
     void render(sf::RenderWindow& window) override;
 
 private:
+    Button* button; // DBG
     Game* game;
 };

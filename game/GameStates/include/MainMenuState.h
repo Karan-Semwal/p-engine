@@ -1,6 +1,11 @@
 #pragma once
 #include "GameState.h"
-#include "Button.h"
+
+class Button;
+namespace sf { 
+    struct Texture;
+    struct RectangleShape;
+}
 
 class MainMenuState : public GameState
 {
@@ -18,5 +23,6 @@ private:
     sf::RectangleShape* m_background;
     Button* m_play;
     Button* m_exit;
-
+    sf::Texture* m_playButtonTextureAddress;
+    sf::Texture* m_exitButtonTextureAddress;
 };
