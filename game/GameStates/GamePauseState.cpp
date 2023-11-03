@@ -10,8 +10,10 @@ GamePauseState::GamePauseState(sf::RenderWindow& window, GamePlayState* gamePlay
       m_quitButtonTextureAddress  { nullptr }
 {
     sf::Texture texture;
-    m_resume = new Button{ *this->m_window, texture, WINDOW_CENTER_X, WINDOW_CENTER_Y - 50, 100, 50 };
-    m_quit   = new Button{ *this->m_window, texture, WINDOW_CENTER_X, WINDOW_CENTER_Y + 50, 100, 50 };
+    // m_resume = new Button{ *this->m_window, texture, WINDOW_CENTER_X, WINDOW_CENTER_Y - 50, 100, 50 };
+    // m_quit   = new Button{ *this->m_window, texture, WINDOW_CENTER_X, WINDOW_CENTER_Y + 50, 100, 50 };
+    m_resume = new Button{ *this->m_window, *m_resumeButtonTextureAddress, WINDOW_CENTER_X, WINDOW_CENTER_Y - 50, 100, 50 };
+    m_quit   = new Button{ *this->m_window, *m_quitButtonTextureAddress  , WINDOW_CENTER_X, WINDOW_CENTER_Y + 50, 100, 50 };
     init();
     std::cout << "--------- Game Pause State Created! ---------\n"; // DBG
 }
@@ -40,14 +42,16 @@ GameState* GamePauseState::update()
     if (m_quit->isClicked())
     {
         std::cout << "=========== Quit Clicked ===========\n";
-        //delete m_gamePlayState;
-        return new MainMenuState{ *this->m_window };
+        auto tmpState = new MainMenuState{ *this->m_window };
+        delete m_gamePlayState;
+        return tmpState;
     }
     return nullptr;
 }
 
 void GamePauseState::render(sf::RenderWindow& window)
 {
+    std::cout << m_resume->getButtonObject().getPosition().x << std::endl;
     m_resume->render(window);
     m_quit->render(window);
 }

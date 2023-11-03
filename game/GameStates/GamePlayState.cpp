@@ -25,8 +25,8 @@ GameState* GamePlayState::update()
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
         // passing this object to new GamePauseState
-        // delete this;
         return new GamePauseState{ *this->m_window, this };
+        delete this;
     }
     if (button->isClicked()) {
         std::cout << "Button Clicked!!!!!!\n"; // DBG

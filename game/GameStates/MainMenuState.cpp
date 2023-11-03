@@ -39,8 +39,8 @@ GameState* MainMenuState::update()
     // std::cout << "Update" << std::endl; // DBG
     if (m_play->isClicked()) {
         std::cout << "=========== Play Clicked ===========\n";
-        delete this;
         return new GamePlayState{ *this->m_window };
+        delete this;
     }
     if (m_exit->isClicked()) {
         // quit the game

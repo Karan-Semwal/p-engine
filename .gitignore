@@ -36,3 +36,4 @@ build
 #extras
 clean.sh
 Todo.txt
+test.cpp
