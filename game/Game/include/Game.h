@@ -9,7 +9,7 @@ public:
 	Game();
 	~Game();
 
-	void setup();
+	void init();
 	void resetGame();
 	void update();
 	void render(sf::RenderWindow& window);

@@ -2,40 +2,33 @@
 #include "GamePlayState.h"
 #include "GamePauseState.h"
 
-GamePlayState::GamePlayState(sf::RenderWindow& window)
+GamePlayState::GamePlayState(sf::RenderWindow &window)
     : GameState(window)
 {
     sf::Texture texture;
-    button = new Button{ *this->m_window, texture, 100, 100, 100, 50 }; // DBG
-    button->getButtonObject().setFillColor(sf::Color::Red);
     game = new Game();
-    std::cout << "--------- Game Play State Created! ---------\n"; // DBG
 }
 
 GamePlayState::~GamePlayState()
 {
     delete game;
-    std::cout << "--------- Game Play State Destroyed! ---------\n"; // DBG
 }
 
-GameState* GamePlayState::update()
+GameState *GamePlayState::update()
 {
     game->update();
-    // Pause the game
+    // Switch to Game Pause State
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
     {
+        // IMP: detach the sf::View attached by Game class for Player
+        this->m_window->setView(this->m_window->getDefaultView());
         // passing this object to new GamePauseState
-        return new GamePauseState{ *this->m_window, this };
-        delete this;
-    }
-    if (button->isClicked()) {
-        std::cout << "Button Clicked!!!!!!\n"; // DBG
+        return new GamePauseState{*this->m_window, this};
     }
     return nullptr;
 }
 
-void GamePlayState::render(sf::RenderWindow& window)
+void GamePlayState::render(sf::RenderWindow &window)
 {
     game->render(window);
-    button->render(window);
 }

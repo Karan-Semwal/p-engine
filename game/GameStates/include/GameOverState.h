@@ -4,9 +4,8 @@
 class GameOverState : public GameState
 {
 public:
-    GameOverState(sf::RenderWindow& window);
+    GameOverState(sf::RenderWindow &window);
     ~GameOverState();
 
 private:
-
 };
