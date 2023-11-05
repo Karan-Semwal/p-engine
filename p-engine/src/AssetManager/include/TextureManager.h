@@ -7,7 +7,7 @@
 const std::string TEXT_PATH_PLAYER = TEXTURE_DIR + "character.png";
 const std::string TEXT_PATH_DIRT   = TEXTURE_DIR + "dirt.png";
 const std::string TEXT_PATH_WALL   = TEXTURE_DIR + "wall.png";
-const std::string TEXT_PATH_BACKG  = TEXTURE_DIR + "background.jpg";
+const std::string TEXT_PATH_BACKG  = TEXTURE_DIR + "background-";
 
 class TextureManager
 {
@@ -15,7 +15,7 @@ public:
     static sf::Texture& get_player_texture();
     static sf::Texture& get_dirt_texture();
     static sf::Texture& get_wall_texture();
-    static sf::Texture& get_backg_texture();
+    static sf::Texture& get_backg_texture(int n);
 
 private:
     static sf::Texture playerText;

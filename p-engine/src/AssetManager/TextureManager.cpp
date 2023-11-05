@@ -29,10 +29,10 @@ sf::Texture& TextureManager::get_wall_texture()
     return wallText;
 }
 
-sf::Texture& TextureManager::get_backg_texture()
+sf::Texture& TextureManager::get_backg_texture(int n)
 {
-    if (!backgText.loadFromFile(TEXT_PATH_BACKG)) {
-        std::cout << "Failed to load wall texture\n";
+    if (!backgText.loadFromFile(TEXT_PATH_BACKG + std::to_string(n) + ".jpg")) {
+        std::cout << "Failed to load background texture\n";
     }
     return backgText;
 }

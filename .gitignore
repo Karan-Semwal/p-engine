@@ -32,6 +32,8 @@
 bin 
 build
 .vscode
+launch.json
+tasks.json
 
 #extras
 clean.sh

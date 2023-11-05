@@ -25,7 +25,8 @@ void MainMenuState::init()
 {
     m_background->setSize({WINDOW_WIDTH, WINDOW_HEIGHT});
     // Color
-    m_background->setFillColor(randomColor());
+    // m_background->setFillColor(randomColor());
+    m_background->setTexture(&TextureManager::get_backg_texture(1)); // DBG
     m_play->getButtonObject().setFillColor(sf::Color::Green);
     m_exit->getButtonObject().setFillColor(sf::Color::Cyan);
 }
