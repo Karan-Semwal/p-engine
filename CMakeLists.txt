@@ -17,6 +17,7 @@ file(GLOB SOURCE_FILES
 include_directories(${PROJECT_NAME} PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}/game/Game/include
     ${CMAKE_CURRENT_SOURCE_DIR}/game/GameStates/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/game/Levels/include
     ${CMAKE_CURRENT_SOURCE_DIR}/p-engine/include
 )
 

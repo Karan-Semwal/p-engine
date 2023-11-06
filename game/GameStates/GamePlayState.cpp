@@ -3,10 +3,10 @@
 #include "GamePauseState.h"
 #include "GameOverState.h"
 
-GamePlayState::GamePlayState(sf::RenderWindow &window)
+GamePlayState::GamePlayState(sf::RenderWindow &window, int levelNumber)
     : GameState(window)
 {
-    game = new Game();
+    game = new Game(levelNumber);
 }
 
 GamePlayState::~GamePlayState()

@@ -1,10 +1,10 @@
 #include "Game.h"
 #include <string>
 
-Game::Game()
+Game::Game(int levelNumber)
     : isplaying(true),
       m_levelManager(),
-      m_mapData(m_levelManager.loadLevel("level1.txt")),
+      m_mapData(m_levelManager.loadLevel("level" + std::to_string(levelNumber) + ".txt")),
       m_tilemap(m_mapData, m_levelManager.getLevelRows(), m_levelManager.getLevelColumns()),
       m_player(),
       m_camera(m_player, m_tilemap, {16 * TILE_WIDTH_SIZE, 9 * TILE_HEIGHT_SIZE})

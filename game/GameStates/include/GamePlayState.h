@@ -6,7 +6,7 @@ class Game;
 class GamePlayState : public GameState
 {
 public:
-    GamePlayState(sf::RenderWindow &window);
+    GamePlayState(sf::RenderWindow &window, int levelNumber = 1);
     ~GamePlayState();
 
     GameState *update() override;

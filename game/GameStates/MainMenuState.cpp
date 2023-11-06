@@ -1,6 +1,7 @@
 #include <iostream>
 #include "MainMenuState.h"
 #include "GamePlayState.h"
+#include "GameLevelsState.h"
 #include "pengine.h"
 
 MainMenuState::MainMenuState(sf::RenderWindow &window)
@@ -36,8 +37,12 @@ GameState *MainMenuState::update()
     // Switch to Game Play State
     if (m_play->isClicked())
     {
-        return new GamePlayState{*this->m_window};
+        // if game does not have levels:
+        //return new GamePlayState{*this->m_window};
+        
+        auto window = this->m_window;
         delete this;
+        return new GameLevelsState{*window};
     }
     // Exit the application
     if (m_exit->isClicked())

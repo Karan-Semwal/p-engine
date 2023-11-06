@@ -16,7 +16,8 @@
                 "${workspaceFolder}/p-engine/src/Ui/include",
                 "${workspaceFolder}/p-engine/src/Player/include",
                 "${workspaceFolder}/p-engine/src/Ui/include",
-                "${workspaceFolder}/game/Game/include"
+                "${workspaceFolder}/game/Game/include",
+                "${workspaceFolder}/game/GameStates/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/g++",
