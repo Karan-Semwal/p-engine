@@ -23,6 +23,7 @@ private:
 
 private:
     int m_totalNumOfLevels;
+    sf::RectangleShape *m_background;
     Button* m_backButton;
     std::vector<LevelButton> m_levelButtons;
 };

@@ -7,6 +7,7 @@ GameLevelsState::GameLevelsState(sf::RenderWindow &window)
       m_totalNumOfLevels(TOTAL_NUMBER_OF_LEVELS)
 {
     //m_levelButtons.reserve(m_totalNumOfLevels);
+    m_background = new sf::RectangleShape{};
     sf::Texture texture; // DBG
     m_backButton = new Button{window, texture, 0 + BUTTON_W, WINDOW_HEIGHT - 50.f, BUTTON_W, BUTTON_H};
     init(window);
@@ -14,6 +15,7 @@ GameLevelsState::GameLevelsState(sf::RenderWindow &window)
 
 GameLevelsState::~GameLevelsState()
 {
+    delete m_background;
 }
 
 GameState* GameLevelsState::update()
@@ -41,6 +43,7 @@ GameState* GameLevelsState::update()
 
 void GameLevelsState::render(sf::RenderWindow& window)
 {
+    window.draw(*m_background);
     for (auto& button : m_levelButtons)
         button.render(window);
 
@@ -51,6 +54,8 @@ void GameLevelsState::render(sf::RenderWindow& window)
 // the current resolution of window
 void GameLevelsState::init(sf::RenderWindow& window)
 {
+    m_background->setSize({WINDOW_WIDTH, WINDOW_HEIGHT});
+    m_background->setTexture(&TextureManager::get_ocean_texture()); // DBG
     float rowStartPos = WINDOW_HEIGHT / (ROW_COUNT + 1);
     float colStartPos = WINDOW_WIDTH  / (COLUMN_COUNT + 1);
     sf::Texture texture; // DBG
@@ -58,7 +63,7 @@ void GameLevelsState::init(sf::RenderWindow& window)
     for (int i = 1; i <= m_totalNumOfLevels; i++)
     {
         LevelButton levelButton(window, 60.f, i, texture);
-        levelButton.getButtonObject().setFillColor(randomColor());
+        // levelButton.getButtonObject().setFillColor(randomColor()); // DBG
 
         // position calculation to place buttons in a grid
         float x = colStartPos * (i % COLUMN_COUNT);
@@ -67,6 +72,7 @@ void GameLevelsState::init(sf::RenderWindow& window)
         float y = rowStartPos * (((i - 1) / ROW_COUNT) + 1);
         
         levelButton.setPos({ x, y });
+        levelButton.setButtonText(TextureManager::get_boxButton_texture()); // DBG
         m_levelButtons.push_back(levelButton);
     }
 

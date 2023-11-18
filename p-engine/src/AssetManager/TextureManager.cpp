@@ -4,6 +4,9 @@ sf::Texture TextureManager::playerText;
 sf::Texture TextureManager::dirtText;
 sf::Texture TextureManager::wallText;
 sf::Texture TextureManager::backgText;
+sf::Texture TextureManager::playButtonText;
+sf::Texture TextureManager::boxButton;
+sf::Texture TextureManager::oceanText;
 
 sf::Texture& TextureManager::get_player_texture()
 {
@@ -35,4 +38,28 @@ sf::Texture& TextureManager::get_backg_texture(int n)
         std::cout << "Failed to load background texture\n";
     }
     return backgText;
+}
+
+sf::Texture& TextureManager::get_playButton_texture()
+{
+    if (!playButtonText.loadFromFile(GET_TEXTURE_PATH("play.png"))) {
+            std::cout << "Failed to load play button texture\n";
+    }
+    return playButtonText;
+}
+
+sf::Texture& TextureManager::get_boxButton_texture()
+{
+    if (!boxButton.loadFromFile(GET_TEXTURE_PATH("box-button.png"))) {
+            std::cout << "Failed to load box button texture\n";
+    }
+    return boxButton;
+}
+
+sf::Texture& TextureManager::get_ocean_texture()
+{
+    if (!oceanText.loadFromFile(GET_TEXTURE_PATH("Ocean.png"))) {
+            std::cout << "Failed to load ocean texture\n";
+    }
+    return oceanText;
 }
