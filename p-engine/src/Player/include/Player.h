@@ -24,9 +24,9 @@ public:
     void render(sf::RenderWindow& window);
 
 public:
-    Hitbox                hitbox;
-    PlayerState           pstate;
-    PlayerFacingDirection pfacingDirection;
+    Hitbox                 hitbox;
+    PlayerState            pstate;
+    PlayerFacingDirection  pfacingDirection;
 
 private:
     sf::Vector2f           m_size;

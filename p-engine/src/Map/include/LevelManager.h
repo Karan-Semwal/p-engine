@@ -11,7 +11,7 @@ public:
     ~LevelManager() {}
 
     std::string getLevelFilePath();
-    std::string loadLevel(const std::string& levelFile);
+    std::string loadLevel(int levelNumber);
     void switchLevel(Tilemap& map);
     int getLevelColumns()  const { return m_levelWidth;  }
     int getLevelRows()     const { return m_levelHeight; }

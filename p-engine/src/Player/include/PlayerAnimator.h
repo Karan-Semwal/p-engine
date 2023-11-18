@@ -10,7 +10,7 @@ public:
     ~PlayerAnimator() { }
 
     void switchAnimation(Player& player);
-    void update() override;
+    void update(Player& player);
 
 private:
     bool isIdle  {true};

@@ -18,6 +18,8 @@ inline const int WINDOW_CENTER_Y = WINDOW_HEIGHT / 2.f;
 inline const float BUTTON_W = 100.f;
 inline const float BUTTON_H = 50.f;
 
+constexpr inline int TOTAL_NUMBER_OF_LEVELS = 3;
+
 inline std::string LEVELS_DIR  = "../game/Levels/";
 inline std::string TEXTURE_DIR = "../res/texture/";
 inline std::string AUDIO_DIR   = "../res/audio/";

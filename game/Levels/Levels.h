@@ -1,7 +1,9 @@
 #pragma once
 #include "pengine.h"
 
-constexpr inline int TOTAL_NUMBER_OF_LEVELS = 3;
+// number of rows and columns in Game Level State
+constexpr inline int ROW_COUNT    = 4; 
+constexpr inline int COLUMN_COUNT = 4;
 
 struct LevelButton : public Button
 {

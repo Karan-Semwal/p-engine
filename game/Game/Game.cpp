@@ -4,7 +4,7 @@
 Game::Game(int levelNumber)
     : isplaying(true),
       m_levelManager(),
-      m_mapData(m_levelManager.loadLevel("level" + std::to_string(levelNumber) + ".txt")),
+      m_mapData(m_levelManager.loadLevel(levelNumber)),
       m_tilemap(m_mapData, m_levelManager.getLevelRows(), m_levelManager.getLevelColumns()),
       m_player(),
       m_camera(m_player, m_tilemap, {16 * TILE_WIDTH_SIZE, 9 * TILE_HEIGHT_SIZE})
@@ -42,5 +42,6 @@ void Game::resetGame()
 void Game::init()
 {
     this->m_player.setVelocity(sf::Vector2f(7.f, 7.f));
-    this->m_player.getObject().setPosition(928.f, 472.f);
+    //this->m_player.setPosition({ 928.f, 472.f });
+    m_player.setPosition({ 100.f, 100.f });
 }

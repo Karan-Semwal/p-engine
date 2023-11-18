@@ -53,8 +53,12 @@ void PlayerAnimator::switchAnimation(Player& player)
     }
 }
 
-void PlayerAnimator::update()
+void PlayerAnimator::update(Player& player)
 {
+    // update animation data with respect to player's new states
+    switchAnimation(player);
+
+    // animate the player
     int frameX{};
     int frameY{};
     if (!isIdle)

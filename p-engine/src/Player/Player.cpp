@@ -3,14 +3,13 @@
 #include "PlayerAnimator.h"
 
 Player::Player()
-    : m_player(),
-      m_veloctiy(3.5f, 3.5f),
+    : m_veloctiy(3.5f, 3.5f),
       hitbox(sf::Vector2f{0., 0.}, sf::Vector2f{0., 0.}),
-      m_animator(new PlayerAnimator(*this, TextureManager::get_player_texture(), 4, 4, 0.15f)),
-      m_controller(new PlayerController()),
       pstate(PlayerState::IDLE),
       pfacingDirection(PlayerFacingDirection::RIGHT)
 {
+    m_animator = new PlayerAnimator(*this, TextureManager::get_player_texture(), 4, 4, 0.15f);
+    m_controller = new PlayerController();
     m_size.x = m_player.getSize().x;
     m_size.y = m_player.getSize().y;
     sf::Vector2f origin(m_size.x / 2.f, m_size.y / 2.f);
@@ -61,8 +60,7 @@ void Player::setVelocity(const sf::Vector2f& vel)
 void Player::update(Tilemap& map, sf::Event& event)
 {
     m_controller->update(*this, map, event);
-    m_animator->switchAnimation(*this);
-    m_animator->update();
+    m_animator->update(*this);
     hitbox.update({m_player.getPosition().x, m_player.getPosition().y});
 }
 

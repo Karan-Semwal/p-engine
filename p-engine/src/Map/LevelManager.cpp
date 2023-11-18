@@ -1,10 +1,11 @@
 #include "LevelManager.h"
 
-std::string LevelManager::loadLevel(const std::string& levelFile)
+std::string LevelManager::loadLevel(int levelNumber)
 {
-    std::ifstream file(LEVELS_DIR + levelFile);
+    currentLevel = levelNumber;
+    std::ifstream file(getLevelFilePath());
     if (!file.is_open()) {
-        std::cerr << "Error opening level file: " << levelFile << std::endl;
+        std::cerr << "Error opening level file: " << currentLevel << std::endl;
         return "";
     }
     std::string content;
@@ -23,9 +24,9 @@ std::string LevelManager::loadLevel(const std::string& levelFile)
 void LevelManager::switchLevel(Tilemap& map)
 {
     currentLevel++;
-    if (currentLevel > MAX_LEVELS)
+    if (currentLevel > TOTAL_NUMBER_OF_LEVELS)
         currentLevel = 1;
-    std::string level = loadLevel(getLevelFilePath());
+    std::string level = loadLevel(currentLevel);
     map.switchMap(level);
 }
 
