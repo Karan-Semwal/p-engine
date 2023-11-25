@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Player.h"
-#include "Tilemap.h"
+#include "Player/Player.h"
+#include "Map/Tilemap.h"
 
 class Camera
 {

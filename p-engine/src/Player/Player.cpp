@@ -1,6 +1,6 @@
-#include "Player.h"
-#include "PlayerController.h"
-#include "PlayerAnimator.h"
+#include "Player/Player.h"
+#include "Player/PlayerController.h"
+#include "Player/PlayerAnimator.h"
 
 Player::Player()
     : m_veloctiy(3.5f, 3.5f),
@@ -8,7 +8,7 @@ Player::Player()
       pstate(PlayerState::IDLE),
       pfacingDirection(PlayerFacingDirection::RIGHT)
 {
-    m_animator = new PlayerAnimator(*this, TextureManager::get_player_texture(), 4, 4, 0.15f);
+    m_animator = new PlayerAnimator(*this, TextureManager::getInstance().get_player_texture(), 4, 4, 0.15f);
     m_controller = new PlayerController();
     m_size.x = m_player.getSize().x;
     m_size.y = m_player.getSize().y;
@@ -26,9 +26,9 @@ Player::~Player()
 
 void Player::initTexture()
 {
-    m_player.setTexture(&TextureManager::get_player_texture());
-    float w = TextureManager::get_player_texture().getSize().x;
-    float h = TextureManager::get_player_texture().getSize().y;
+    m_player.setTexture(&TextureManager::getInstance().get_player_texture());
+    float w = TextureManager::getInstance().get_player_texture().getSize().x;
+    float h = TextureManager::getInstance().get_player_texture().getSize().y;
     m_player.setTextureRect(sf::IntRect(0, 0, w / 4, h / 4));
 }
 

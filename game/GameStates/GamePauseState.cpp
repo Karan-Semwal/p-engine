@@ -51,7 +51,7 @@ void GamePauseState::init()
     m_background->setSize({WINDOW_WIDTH, WINDOW_HEIGHT});
     // Color
     // m_background->setFillColor(randomColor());
-    m_background->setTexture(&TextureManager::get_backg_texture(2)); // DBG
+    m_background->setTexture(&TextureManager::getInstance().get_backg_texture(2)); // DBG
     m_resume->getButtonObject().setFillColor(sf::Color::Yellow);
     m_quit->getButtonObject().setFillColor(sf::Color::Blue);
 }

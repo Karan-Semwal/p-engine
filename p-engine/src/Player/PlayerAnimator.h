@@ -1,7 +1,7 @@
 #pragma once
-#include "Animator.h"
-#include "PlayerState.h"
-#include "Player.h"
+#include "Animation/Animator.h"
+#include "Player/PlayerState.h"
+#include "Player/Player.h"
 
 class PlayerAnimator : public Animator
 {

@@ -1,4 +1,4 @@
-#include "Hitbox.h"
+#include "Physics/Hitbox.h"
 
 Hitbox::Hitbox(float x, float y, float w, float h, const sf::Color& color)
     : m_size({w, h}), m_position({x, y}), m_color{color}

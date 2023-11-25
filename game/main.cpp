@@ -3,6 +3,9 @@
 
 int main()
 {
+    // initialize engine
+    pengine::init();
+
     // Game Window
     sf::VideoMode videoMode{WINDOW_WIDTH, WINDOW_HEIGHT};
     sf::RenderWindow window{videoMode, "test-game", sf::Style::Close};
@@ -20,7 +23,6 @@ int main()
             sf::Event event;
             while (window.pollEvent(event))
             {
-                // if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) window.close();
                 if (event.type == sf::Event::Closed)
                     window.close();
             }

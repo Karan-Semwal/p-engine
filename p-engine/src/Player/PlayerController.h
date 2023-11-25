@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Player.h"
-#include "PlayerState.h"
-#include "CollisionSide.h"
-#include "Tilemap.h"
-#include "Util.h"
+#include "Player/Player.h"
+#include "Player/PlayerState.h"
+#include "Collision/CollisionSide.h"
+#include "Map/Tilemap.h"
+#include "Utils/Util.h"
 
 class PlayerController
 {

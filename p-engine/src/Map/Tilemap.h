@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "TextureManager.h"
-#include "Global.h"
+#include "AssetManager/TextureManager.h"
+#include "Utils/Global.h"
 
 class Tilemap
 {

@@ -1,4 +1,4 @@
-#include "Bar.h"
+#include "Ui/Bar.h"
 
 Bar::Bar(float amount, float mx, float my)
     : max_x(mx), max_y(my),

@@ -27,9 +27,9 @@ void MainMenuState::init()
     m_background->setSize({WINDOW_WIDTH, WINDOW_HEIGHT});
     // Color
     // m_background->setFillColor(randomColor());
-    m_background->setTexture(&TextureManager::get_backg_texture(1)); // DBG
+    m_background->setTexture(&TextureManager::getInstance().get_backg_texture(1)); // DBG
     m_exit->getButtonObject().setFillColor(sf::Color::Cyan);
-    m_play->getButtonObject().setTexture(&TextureManager::get_playButton_texture());
+    m_play->getButtonObject().setTexture(&TextureManager::getInstance().get_playButton_texture());
     // m_play->getButtonObject().setOutlineColor(sf::Color::Green); // DBG
     // m_play->getButtonObject().setOutlineThickness(3.f);
 }

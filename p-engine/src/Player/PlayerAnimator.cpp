@@ -1,4 +1,4 @@
-#include "PlayerAnimator.h"
+#include "Player/PlayerAnimator.h"
 
 PlayerAnimator::PlayerAnimator(Player& player, sf::Texture& spriteSheet, int c, int r, float ft)
     : Animator(player.getObject(), spriteSheet, c, r, ft)

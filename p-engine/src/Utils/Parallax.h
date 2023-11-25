@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Global.h"
+#include "Utils/Global.h"
 
 class Parallax
 {

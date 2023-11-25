@@ -1,4 +1,4 @@
-#include "Tilemap.h"
+#include "Map/Tilemap.h"
 #include <cmath>
 
 Tilemap::Tilemap(const std::string& mapData)
@@ -30,10 +30,10 @@ void Tilemap::render(sf::RenderWindow& window)
             char tileType = mapData[row * cols + col];
 
             if (tileType == '.') {
-                mapSprite.setTexture(TextureManager::get_dirt_texture()); // Dirt tile
+                mapSprite.setTexture(TextureManager::getInstance().get_dirt_texture()); // Dirt tile
             } 
             else if (tileType == '#') {
-                mapSprite.setTexture(TextureManager::get_wall_texture()); // Wall tile
+                mapSprite.setTexture(TextureManager::getInstance().get_wall_texture()); // Wall tile
             }
 
             mapSprite.setPosition(col * tileWidth, row * tileHeight);

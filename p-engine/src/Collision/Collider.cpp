@@ -1,4 +1,4 @@
-#include "Collider.h"
+#include "Collision/Collider.h"
 
 Collider::Collider(sf::RectangleShape& rect)
     : m_rectangle(&rect)

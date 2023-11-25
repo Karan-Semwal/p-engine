@@ -1,4 +1,4 @@
-#include "Animator.h"
+#include "Animation/Animator.h"
 
 Animator::Animator(sf::RectangleShape& object, sf::Texture& spriteSheet, int c, int r, float ft)
     : texture(&spriteSheet),

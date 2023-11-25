@@ -8,6 +8,7 @@ set(CMAKE_CXX_FLAGS "-g")
 
 # Add the source files to your project
 file(GLOB SOURCE_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/pengine.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/*cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Map/*cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/Camera/*cpp
@@ -25,16 +26,7 @@ add_library(${PROJECT_NAME} ${SOURCE_FILES})
 
 # Set the include directories
 target_include_directories(${PROJECT_NAME} PUBLIC 
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Player/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Map/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Camera/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Collision/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Physics/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Ui/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Utils/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/AssetManager/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/Animation/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/GameStates/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # Find SFML package

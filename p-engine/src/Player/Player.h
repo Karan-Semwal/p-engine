@@ -1,9 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Tilemap.h"
-#include "PlayerState.h"
-#include "TextureManager.h"
-#include "Hitbox.h"
+#include "Map/Tilemap.h"
+#include "Player/PlayerState.h"
+#include "AssetManager/TextureManager.h"
+#include "Physics/Hitbox.h"
 
 // Forward declaration
 class PlayerAnimator;
