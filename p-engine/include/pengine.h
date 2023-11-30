@@ -1,7 +1,5 @@
 #pragma once
 
-#define LOG(m) std::cout << m << std::endl // DBG
-
 #include "Animation/Animator.h"
 #include "AssetManager/TextureManager.h"
 #include "Map/Tilemap.h"

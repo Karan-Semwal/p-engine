@@ -55,7 +55,6 @@ void GameLevelsState::render(sf::RenderWindow& window)
 void GameLevelsState::init(sf::RenderWindow& window)
 {
     m_background->setSize({WINDOW_WIDTH, WINDOW_HEIGHT});
-    m_background->setTexture(&TextureManager::getInstance().get_ocean_texture()); // DBG
     float rowStartPos = WINDOW_HEIGHT / (ROW_COUNT + 1);
     float colStartPos = WINDOW_WIDTH  / (COLUMN_COUNT + 1);
     sf::Texture texture; // DBG
@@ -63,7 +62,7 @@ void GameLevelsState::init(sf::RenderWindow& window)
     for (int i = 1; i <= m_totalNumOfLevels; i++)
     {
         LevelButton levelButton(window, 60.f, i, texture);
-        // levelButton.getButtonObject().setFillColor(randomColor()); // DBG
+        levelButton.getButtonObject().setFillColor(randomColor()); // DBG
 
         // position calculation to place buttons in a grid
         float x = colStartPos * (i % COLUMN_COUNT);
@@ -72,7 +71,6 @@ void GameLevelsState::init(sf::RenderWindow& window)
         float y = rowStartPos * (((i - 1) / ROW_COUNT) + 1);
         
         levelButton.setPos({ x, y });
-        levelButton.setButtonText(TextureManager::getInstance().get_boxButton_texture()); // DBG
         m_levelButtons.push_back(levelButton);
     }
 

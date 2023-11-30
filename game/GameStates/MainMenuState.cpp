@@ -10,7 +10,7 @@ MainMenuState::MainMenuState(sf::RenderWindow &window)
       m_exitButtonTextureAddress{nullptr}
 {
     m_background = new sf::RectangleShape{};
-    m_play = new Button{*this->m_window, *m_playButtonTextureAddress, WINDOW_CENTER_X, WINDOW_CENTER_Y - 50, 150, 75};
+    m_play = new Button{*this->m_window, *m_playButtonTextureAddress, WINDOW_CENTER_X, WINDOW_CENTER_Y - 50, 100, 50};
     m_exit = new Button{*this->m_window, *m_exitButtonTextureAddress, WINDOW_CENTER_X, WINDOW_CENTER_Y + 50, 100, 50};
     init();
 }
@@ -28,10 +28,8 @@ void MainMenuState::init()
     // Color
     // m_background->setFillColor(randomColor());
     m_background->setTexture(&TextureManager::getInstance().get_backg_texture(1)); // DBG
+    m_play->getButtonObject().setFillColor(sf::Color::Yellow);
     m_exit->getButtonObject().setFillColor(sf::Color::Cyan);
-    m_play->getButtonObject().setTexture(&TextureManager::getInstance().get_playButton_texture());
-    // m_play->getButtonObject().setOutlineColor(sf::Color::Green); // DBG
-    // m_play->getButtonObject().setOutlineThickness(3.f);
 }
 
 GameState *MainMenuState::update()
@@ -39,7 +37,8 @@ GameState *MainMenuState::update()
     // Switch to Game Play State
     if (m_play->isClicked())
     {
-        // if game does not have levels:
+        // if game does not have levels
+        // then directly switch to gameplay state:
         //return new GamePlayState{*this->m_window};
         
         auto window = this->m_window;
